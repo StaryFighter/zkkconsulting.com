@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://zkkconsulting.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="ZKK Consulting — market intelligence for early-stage medtech and engineering-driven startups, with a TAM / SAM / SOM nested-circle mark." />
+  <meta property="og:image:alt" content="ZKK Consulting: market intelligence for early-stage medtech and engineering-driven startups, with a TAM / SAM / SOM nested-circle mark." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Market Research &amp; Analysis | ZKK Consulting" />
   <meta name="twitter:description" content="Fixed-scope competitive landscape, market sizing, and analysis reports for early-stage medtech and engineering-driven startups." />
@@ -720,12 +720,49 @@
       .founder-card, .ms-card { padding: 1.7rem 1.4rem; }
     }
 
+    /* ═══ v3 — visuals callout ═══ */
+    .ms-visuals {
+      display: flex; gap: 1.6rem; align-items: flex-start;
+      max-width: 900px; margin: 2.4rem auto 0;
+      background: var(--white); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: 4px;
+      padding: 2rem 2.1rem;
+    }
+    .ms-visuals-icon { flex-shrink: 0; padding-top: .2rem; }
+    .ms-visuals-icon svg {
+      width: 40px; height: 40px; fill: none; stroke: var(--accent);
+      stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .ms-visuals-title {
+      font-family: var(--serif); font-size: 1.22rem; font-weight: 600;
+      color: var(--ink); margin-bottom: .7rem;
+    }
+    .ms-visuals-body p { font-size: .91rem; line-height: 1.8; color: var(--muted); margin-bottom: .85rem; }
+    .ms-visuals-body strong { color: var(--ink); font-weight: 600; }
+    .ms-visuals-list {
+      list-style: none; display: grid; grid-template-columns: 1fr 1fr;
+      gap: .45rem 1.4rem; margin-top: 1rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .ms-visuals-list li {
+      position: relative; padding-left: 1.15rem;
+      font-size: .86rem; line-height: 1.6; color: var(--muted);
+    }
+    .ms-visuals-list li::before {
+      content: ""; position: absolute; left: 0; top: .55em;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+    }
+    @media (max-width: 760px) {
+      .ms-visuals { flex-direction: column; gap: 1rem; padding: 1.6rem 1.4rem; }
+      .ms-visuals-list { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
 
   <nav id="nav">
-    <a href="#hero" class="nav-logo" aria-label="ZKK Consulting LLC — home">
+    <a href="#hero" class="nav-logo" aria-label="ZKK Consulting LLC, home">
       <svg class="nav-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
         <g fill="none" stroke-width="3">
           <circle cx="32" cy="30" r="21" stroke="var(--navy)"/>
@@ -1008,8 +1045,8 @@
         projects.
       </p>
       <p>
-        <strong>That is exactly the work in our Market Brief, Market Report, and Strategy Package</strong> — and
-        in the custom research we scope outside them.
+        <strong>That is exactly the work in our Market Brief, Market Report, and Strategy Package</strong>,
+        and in the custom research we scope outside them.
       </p>
     </div>
   </section>
@@ -1044,7 +1081,7 @@
   <section id="packages" class="alt">
     <div class="section-label fade-up">Services</div>
     <h2 class="fade-up">Pick your depth.</h2>
-    <p class="section-intro fade-up">Three fixed-scope packages cover the most common requests. They are a starting point, not a menu limit — the full range of work we take on is listed below them.</p>
+    <p class="section-intro fade-up">Three fixed-scope packages cover the most common requests. They are a starting point, not a menu limit. The full range of work we take on is listed below them.</p>
     <div class="pricing-grid">
 
       <div class="card price-card fade-up">
@@ -1138,8 +1175,8 @@
         <h3 class="ms-title">The packages are a starting point, not a limit.</h3>
         <p class="ms-sub">
           Most of what we do is research and analysis, and it doesn't all fit into three boxes. Below is a
-          sample of the work we take on. If what you need isn't listed, it is still worth asking — the list
-          is illustrative, not exhaustive, and nearly every engagement gets scoped to the question at hand.
+          sample of the work we take on. If what you need isn't listed, it is still worth asking. The list
+          is illustrative rather than exhaustive, and nearly every engagement gets scoped to the question at hand.
         </p>
       </div>
 
@@ -1186,6 +1223,39 @@
             <li>Data collection, cleaning, and structuring</li>
             <li>Recurring research briefs on a set cadence</li>
             <li>Research support for decks, memos, and diligence packets</li>
+            <li>Charts, tables, and figures built from the underlying data</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ms-visuals">
+        <div class="ms-visuals-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="2.5" y="4.5" width="19" height="13" rx="2"/>
+            <path d="M2.5 14l5-4.5 4 3.5 3.5-3 6.5 5.5"/>
+            <circle cx="16" cy="9" r="1.6"/>
+            <path d="M8 21h8M12 17.5V21"/>
+          </svg>
+        </div>
+        <div class="ms-visuals-body">
+          <div class="ms-visuals-title">We also make the visuals.</div>
+          <p>
+            Jad produces <strong>product renders, technical illustrations, exploded diagrams, and short
+            animations</strong>, the kind of imagery that makes a device or system immediately legible to
+            someone seeing it for the first time. It pairs naturally with the research: the same engagement
+            can produce the market math and the figures you present it with.
+          </p>
+          <p>
+            This tends to matter most in <strong>investor pitch decks</strong>, where a clear render of what
+            you are building does more work than a paragraph describing it. We also produce visuals for
+            grant applications, technical documentation, conference posters, and internal reviews. Visuals
+            can be added to any engagement or commissioned on their own.
+          </p>
+          <ul class="ms-visuals-list">
+            <li>Product renders and concept visualizations</li>
+            <li>Technical illustrations, exploded views, and system diagrams</li>
+            <li>Short explainer animations and motion graphics</li>
+            <li>Pitch deck figures, charts, and slide design</li>
           </ul>
         </div>
       </div>
@@ -1194,8 +1264,8 @@
         <p class="ms-cta-lead"><strong>Don't see what you need? Ask us anyway.</strong></p>
         <p class="ms-cta-body">
           If your project doesn't map to a package, we'll scope it together on a call and send a
-          <strong>custom fixed-price quote based on the scope we define together</strong> — the same fixed-price
-          basis the packages are built on. No hourly billing, no surprise invoices. Tell us what decision
+          <strong>custom fixed-price quote based on the scope we define together</strong>, on the same
+          fixed-price basis the packages are built on. No hourly billing, no surprise invoices. Tell us what decision
           you're trying to make and we'll tell you honestly whether it's research we can do well.
         </p>
         <div class="ms-cta-btns">
@@ -1226,10 +1296,10 @@
       <div class="review-form-title">Leave a review</div>
       <p class="review-form-sub">Worked with us on a brief, report, strategy package, or custom project? Share a sentence or two about the experience.</p>
       <div class="form-success" id="reviewSuccess" hidden>
-        <strong>Review received — thank you.</strong> We verify reviews against real engagements before publishing them here.
+        <strong>Review received. Thank you.</strong> We verify reviews against real engagements before publishing them here.
       </div>
       <form class="review-form" id="reviewForm" action="https://formsubmit.co/info@zkkconsulting.com" method="POST">
-        <input type="hidden" name="_subject" value="New review submission — zkkconsulting.com" />
+        <input type="hidden" name="_subject" value="New review submission from zkkconsulting.com" />
         <input type="hidden" name="_cc" value="zolomon@zkkconsulting.com,jad@zkkconsulting.com" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
@@ -1250,7 +1320,7 @@
           <textarea id="rText" name="review" placeholder="A sentence or two about the experience" required maxlength="500"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit Review</button>
-        <p class="review-form-note">Your review is sent straight to us — no email app needed. Reviews are verified against real engagements before they're published here. By submitting, you agree that ZKK Consulting LLC may publish your review, with your name and company, on this site.</p>
+        <p class="review-form-note">Your review is sent straight to us, no email app needed. Reviews are verified against real engagements before they're published here. By submitting, you agree that ZKK Consulting LLC may publish your review, with your name and company, on this site.</p>
       </form>
     </div>
   </section>
@@ -1259,7 +1329,7 @@
     <div class="section-label fade-up">Founders</div>
     <h2 class="fade-up">Who's behind the research.</h2>
     <p class="section-intro fade-up">
-      ZKK Consulting LLC is a two-person firm. You work directly with the people doing the research — there
+      ZKK Consulting LLC is a two-person firm. You work directly with the people doing the research. There
       is no account layer between you and the analyst.
     </p>
 
@@ -1283,8 +1353,8 @@
 
         <p class="founder-bio">
           Zolomon leads ZKK's medtech and medical device work. He researches device markets, competitive
-          fields, regulatory pathways, and reimbursement landscapes, and builds the financial models —
-          revenue, COGS, and operating expense forecasts — that sit underneath them. His background pairs
+          fields, regulatory pathways, and reimbursement landscapes, and builds the financial models (revenue,
+          COGS, and operating expense forecasts) that sit underneath them. His background pairs
           graduate biomedical engineering with an undergraduate finance degree, so a single engagement can
           move from the clinical and technical context of a device to the market math investors expect to see.
         </p>
@@ -1331,8 +1401,8 @@
           Jad leads ZKK's research outside of medtech, covering electronics, embedded systems, connected
           devices, and hardware-driven products more generally. He researches technology and component
           landscapes, competing product lines, supply and vendor bases, and the standards environment a
-          product has to live in — the kind of work that requires reading a datasheet and a market report
-          with equal comfort.
+          product has to live in. That work requires reading a datasheet and a market report with equal
+          comfort.
         </p>
         <p class="founder-bio">
           He holds a B.S. in <strong>Electronic Systems Engineering Technology</strong> from Texas A&amp;M
@@ -1354,7 +1424,7 @@
 
     <p class="founders-note fade-up">
       Every engagement is contracted with <strong>ZKK Consulting LLC</strong>. Depending on scope you may work
-      with one of us or both — we'll tell you which on the scoping call.
+      with one of us or both. We'll tell you which on the scoping call.
     </p>
   </section>
 
@@ -1376,7 +1446,7 @@
       </details>
       <details class="faq-item">
         <summary>Do you only work in medtech?</summary>
-        <div class="faq-answer">No. Medtech is where our deepest specialization sits, and it's where the sample deliverables on this site come from. But our research and analysis methods apply across engineering-driven and technical industries — electronics, embedded and connected products, industrial hardware, and adjacent markets. If you're unsure whether your field is a fit, email us and describe it. We'll give you a straight answer, including if the answer is no.</div>
+        <div class="faq-answer">No. Medtech is where our deepest specialization sits, and it's where the sample deliverables on this site come from. But our research and analysis methods apply across engineering-driven and technical industries: electronics, embedded and connected products, industrial hardware, and adjacent markets. If you're unsure whether your field is a fit, email us and describe it. We'll give you a straight answer, including if the answer is no.</div>
       </details>
       <details class="faq-item">
         <summary>How does payment work?</summary>
@@ -1392,11 +1462,11 @@
       </details>
       <details class="faq-item">
         <summary>What if my project doesn't fit a package?</summary>
-        <div class="faq-answer">Then email us and describe it — that's genuinely the point of the <a href="#packages">services list</a> above. The three packages cover the most common requests, but a large share of our work is scoped from scratch. We'll work through it on the scoping call and send a <strong>custom fixed-price quote based on the scope we define together</strong>, on the same fixed-price basis the packages are built on. The packages are a starting point, not a ceiling.</div>
+        <div class="faq-answer">Then email us and describe it. That is the point of the <a href="#packages">services list</a> above. The three packages cover the most common requests, but a large share of our work is scoped from scratch. We'll work through it on the scoping call and send a <strong>custom fixed-price quote based on the scope we define together</strong>, on the same fixed-price basis the packages are built on. The packages are a starting point, not a ceiling.</div>
       </details>
       <details class="faq-item">
         <summary>Do you give recommendations or advice?</summary>
-        <div class="faq-answer">We provide <strong>research and analysis</strong>. We report what the sources show, document every assumption, and walk you through what the findings mean — so you can make the call with better information. We do not provide legal, regulatory, medical, tax, accounting, or investment advice, and nothing we deliver should be treated as a substitute for a licensed professional in those fields. Every business decision remains yours.</div>
+        <div class="faq-answer">We provide <strong>research and analysis</strong>. We report what the sources show, document every assumption, and walk you through what the findings mean, so you can make the call with better information. We do not provide legal, regulatory, medical, tax, accounting, or investment advice, and nothing we deliver should be treated as a substitute for a licensed professional in those fields. Every business decision remains yours.</div>
       </details>
       <details class="faq-item">
         <summary>How is the research sourced?</summary>
@@ -1490,7 +1560,7 @@
               '<div class="review-author"><strong></strong><span></span></div>';
             card.querySelector('.review-text').textContent = r.text;
             card.querySelector('.review-author strong').textContent = r.name;
-            if (r.company) card.querySelector('.review-author span').textContent = ' — ' + r.company;
+            if (r.company) card.querySelector('.review-author span').textContent = ' · ' + r.company;
             grid.appendChild(card);
           });
         }

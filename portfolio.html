@@ -443,12 +443,20 @@
 
     @media (max-width: 560px) { .pf-tabs { display: flex; width: 100%; } .pf-tab { flex: 1 1 100%; } }
 
+    /* ═══ v3 — project card photos ═══
+       Real project images restored. Files live at the site root:
+       biomedical-device.jpg, addiction-device.jpg, kidney-monitoring.jpg, biofilm.jpg
+       These are set as background images on .tamu-card-img (see the base rule above),
+       using background-size: contain so nothing is cropped. The research poster is a
+       wide image, so it letterboxes inside the card. That is intentional. */
+    .tamu-card-img { background-color: var(--white); }
+
   </style>
 </head>
 <body>
 
   <nav id="nav">
-    <a href="#hero" class="nav-logo" aria-label="ZKK Consulting LLC — home">
+    <a href="#hero" class="nav-logo" aria-label="ZKK Consulting LLC, home">
       <svg class="nav-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
         <g fill="none" stroke-width="3">
           <circle cx="32" cy="30" r="21" stroke="var(--navy)"/>
@@ -487,7 +495,7 @@
       <div class="hero-eyebrow">ZKK Consulting LLC</div>
       <h1>The people doing the research.</h1>
       <p class="hero-desc">
-        ZKK Consulting is a two-person firm. Full backgrounds for both co-founders are below —
+        ZKK Consulting is a two-person firm. Full backgrounds for both co-founders are below:
         education, project work, experience, and credentials.
       </p>
       <div class="pf-tabs" role="tablist" aria-label="Choose a co-founder">
@@ -564,7 +572,7 @@
     <div class="tamu-grid">
 
       <div class="card tamu-card fade-up">
-        <div class="tamu-card-img" style="background-image: url('biomedical-device.jpg');"></div>
+        <div class="tamu-card-img" style="background-image: url('biomedical-device.jpg');" role="img" aria-label="Rendering of the surgical device studied, showing 240 mm length, 50 degree tip angle, and 6 mm tip width"></div>
         <div class="tamu-card-body">
           <span class="badge">Guided Research</span>
           <div class="tamu-card-title">Biomedical Device Case Study</div>
@@ -574,7 +582,7 @@
       </div>
 
       <div class="card tamu-card fade-up">
-        <div class="tamu-card-img" style="background-image: url('addiction-device.jpg');"></div>
+        <div class="tamu-card-img" style="background-image: url('addiction-device.jpg');" role="img" aria-label="Smart pill bottle with dispensing cap and stationary charging base"></div>
         <div class="tamu-card-body">
           <span class="badge">Graduate Project</span>
           <div class="tamu-card-title">Addiction Prevention &amp; Recovery Device</div>
@@ -584,7 +592,7 @@
       </div>
 
       <div class="card tamu-card fade-up">
-        <div class="tamu-card-img" style="background-image: url('kidney-monitoring.jpg');"></div>
+        <div class="tamu-card-img" style="background-image: url('kidney-monitoring.jpg');" role="img" aria-label="Exploded diagram of an implantable silicone cuff with Doppler crystal, electrodes, and anti-fouling coating"></div>
         <div class="tamu-card-body">
           <span class="badge">Graduate Project</span>
           <div class="tamu-card-title">Post Kidney Transplant Remote Patient Monitoring</div>
@@ -594,7 +602,7 @@
       </div>
 
       <div class="card tamu-card fade-up">
-        <div class="tamu-card-img" style="background-image: url('biofilm.jpg');"></div>
+        <div class="tamu-card-img" style="background-image: url('biofilm.jpg');" role="img" aria-label="Research poster: Effect of PEG-Gelatin Coating and Plasma Treatment on Protein Adsorption of Stainless Steel Biomaterial Surfaces"></div>
         <div class="tamu-card-body">
           <span class="badge">Undergraduate Project</span>
           <div class="tamu-card-title">Stainless Steel PEG-Gelatin Biofilm</div>
@@ -741,7 +749,7 @@
         <h2>Engineering meets market research.</h2>
         <p>
           Jad Haddad is a co-founder of ZKK Consulting LLC and holds a B.S. in
-          <strong>Electronic Systems Engineering Technology</strong> from Texas A&amp;M University — an
+          <strong>Electronic Systems Engineering Technology</strong> from Texas A&amp;M University, an
           applied engineering program built around electronics design, instrumentation, embedded systems,
           and product development.
         </p>
@@ -750,7 +758,7 @@
           technology markets outside of medtech</strong>: technology and component landscapes, competing
           product lines, supply and vendor bases, and the standards environment a product has to operate in.
         </p>
-        <p class="pf-todo">[CONFIRM] Jad — replace or expand this paragraph with how you'd describe your own
+        <p class="pf-todo">[CONFIRM] Jad, replace or expand this paragraph with how you'd describe your own
           background and what you want clients to know about your side of the practice.</p>
       </div>
       <div class="about-skills fade-up">
@@ -795,7 +803,7 @@
     <div class="section-label fade-up">Texas A&amp;M University</div>
     <h2 class="fade-up">Engineering Projects</h2>
     <p class="section-intro fade-up">
-      Project work from jad-haddad.com. Descriptions below are placeholders —
+      Project work from jad-haddad.com. Descriptions below are placeholders.
       <span class="pf-todo-inline">[CONFIRM] replace each with Jad's own summary.</span>
     </p>
     <div class="proj-grid">
@@ -884,7 +892,7 @@
         <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
         <div>
           <div class="cert-name">[CONFIRM] Certification name</div>
-          <div class="cert-issuer">[CONFIRM] Issuer — or delete this whole section if none apply</div>
+          <div class="cert-issuer">[CONFIRM] Issuer. Delete this whole section if none apply.</div>
         </div>
       </div>
     </div>
