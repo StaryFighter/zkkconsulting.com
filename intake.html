@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Client Intake | ZKK Consulting</title>
+
+  <meta name="description" content="Pre-call intake form for market research engagements with ZKK Consulting LLC. Tell us about your product and the decision you're trying to make." />
+  <meta name="author" content="ZKK Consulting LLC" />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#fbfaf7" />
+  <link rel="canonical" href="https://zkkconsulting.com/intake.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Client Intake | ZKK Consulting" />
+  <meta property="og:url" content="https://zkkconsulting.com/intake.html" />
+  <meta property="og:image" content="https://zkkconsulting.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ZKK Consulting - market intelligence for early-stage medtech and engineering-driven startups, with a TAM / SAM / SOM nested-circle mark." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://zkkconsulting.com/og-image.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #fbfaf7;
+      --bg-alt:  #f3f1ea;
+      --white:   #ffffff;
+      --ink:     #1c2b3a;
+      --navy:    #1f3a5f;
+      --navy-d:  #16293f;
+      --accent:  #2e6e63;
+      --muted:   #5b6573;
+      --border:  #e4e0d6;
+      --serif:   'Lora', Georgia, serif;
+      --sans:    'Inter', system-ui, sans-serif;
+      --nav-h:   72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 5vw;
+      background: rgba(251, 250, 247, 0.95);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.shrink { padding: 0.6rem 5vw; box-shadow: 0 2px 12px rgba(28, 43, 58, 0.06); }
+
+    .nav-logo {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--serif);
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--ink); letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    .nav-mark { width: 30px; height: 30px; flex: none; display: block; transition: width 0.3s ease, height 0.3s ease; }
+    nav.shrink .nav-mark { width: 26px; height: 26px; }
+    @media (max-width: 420px) {
+      .nav-logo { font-size: 1.05rem; gap: 0.45rem; }
+      .nav-mark, nav.shrink .nav-mark { width: 25px; height: 25px; }
+    }
+
+    .nav-links { display: flex; gap: 1.9rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--muted); font-size: 0.82rem;
+      text-decoration: none; letter-spacing: 0.06em;
+      text-transform: uppercase; font-weight: 500;
+      transition: color 0.2s; position: relative; padding: 0.2rem 0;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -3px;
+      width: 0; height: 1px; background: var(--navy); transition: width 0.25s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--ink); }
+
+    .nav-cta {
+      color: var(--white) !important; background: var(--navy);
+      padding: 0.45rem 1rem !important; border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--navy-d); }
+    .nav-cta::after { display: none; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.9rem;
+      font-family: var(--sans);
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; border-radius: 4px;
+      transition: all 0.22s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--navy-d); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(31, 58, 95, 0.18); }
+    .btn-outline { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-1px); }
+
+    /* ── PAGE HEADER ── */
+    #intake-hero {
+      padding: 140px 5vw 48px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--accent);
+      font-weight: 600; margin-bottom: 1.5rem;
+      display: inline-flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: 0.5;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 600; line-height: 1.15;
+      margin-bottom: 1.1rem; letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .hero-desc {
+      font-size: 1.02rem; color: var(--muted);
+      max-width: 600px; margin: 0 auto; line-height: 1.85;
+    }
+
+    /* ── FORM ── */
+    section { padding: 3.5rem 5vw 4.25rem; }
+
+    .intake-wrap { max-width: 680px; margin: 0 auto; }
+
+    .intake-form { display: flex; flex-direction: column; gap: 1.4rem; }
+    .intake-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field label {
+      font-size: 0.82rem; font-weight: 600; color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+    .field label .opt { color: var(--muted); font-weight: 400; }
+    .field .hint { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    .intake-form input,
+    .intake-form select,
+    .intake-form textarea {
+      width: 100%; padding: 0.8rem 1rem;
+      border: 1px solid var(--border); border-radius: 6px;
+      background: var(--white); color: var(--ink);
+      font-family: var(--sans); font-size: 0.93rem;
+      transition: border-color 0.2s;
+    }
+    .intake-form input:focus,
+    .intake-form select:focus,
+    .intake-form textarea:focus { outline: none; border-color: var(--navy); }
+    .intake-form textarea { resize: vertical; min-height: 110px; }
+    .intake-form select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6573' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.9rem center; background-size: 14px; cursor: pointer; }
+
+    .intake-form .btn { align-self: center; margin-top: 0.4rem; }
+
+    .confid-note {
+      display: flex; gap: 0.7rem; align-items: flex-start;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1rem 1.2rem;
+      font-size: 0.85rem; color: var(--muted); line-height: 1.65;
+    }
+    .confid-note svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.6; flex-shrink: 0; margin-top: 2px; }
+    .confid-note strong { color: var(--ink); font-weight: 600; }
+
+    .form-note { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    .form-success {
+      background: #eef5f0; border: 1px solid #bcd8c8;
+      border-radius: 8px; padding: 1.1rem 1.3rem;
+      font-size: 0.92rem; color: var(--ink); line-height: 1.65;
+      text-align: center; margin-bottom: 1.4rem;
+    }
+    .form-success strong { color: var(--accent); }
+
+    /* ── WHAT HAPPENS NEXT ── */
+    .next-strip {
+      max-width: 680px; margin: 2.8rem auto 0;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.6rem 1.8rem;
+    }
+    .next-strip .next-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; color: var(--ink); margin-bottom: 0.6rem; }
+    .next-strip ol { margin-left: 1.2rem; color: var(--muted); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.35rem; }
+    .next-strip li strong { color: var(--ink); font-weight: 600; }
+
+    /* ── PAY DEPOSIT ── */
+    .deposit-strip {
+      max-width: 680px; margin: 2.8rem auto 0;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.6rem 1.8rem;
+    }
+    .deposit-strip .deposit-head {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--serif); font-size: 1.08rem; font-weight: 600;
+      color: var(--ink); margin-bottom: 0.6rem;
+    }
+    .deposit-strip .deposit-head svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.6; flex-shrink: 0; }
+    .deposit-intro { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.3rem; }
+    .deposit-intro strong { color: var(--ink); font-weight: 600; }
+    .deposit-steps { display: flex; flex-direction: column; gap: 0.85rem; }
+    .dep-step { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .dep-step-n {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--navy); color: #fff; font-size: 0.72rem; font-weight: 600;
+      display: flex; align-items: center; justify-content: center; margin-top: 0.12rem;
+    }
+    .dep-step-t strong { color: var(--ink); font-weight: 600; }
+    .deposit-options { display: flex; flex-direction: column; gap: 0.8rem; }
+    .deposit-row {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 1rem 1.2rem; background: var(--bg);
+      text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .deposit-row:hover { border-color: var(--navy); box-shadow: 0 6px 18px rgba(28, 43, 58, 0.07); transform: translateY(-1px); }
+    .deposit-row .dep-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+    .deposit-row .dep-tot { display: block; font-family: var(--sans); font-size: 0.78rem; font-weight: 400; color: var(--muted); margin-top: 0.15rem; }
+    .deposit-row .dep-btn {
+      flex-shrink: 0; background: var(--navy); color: var(--white);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 0.65rem 1.1rem; border-radius: 4px; transition: background 0.2s;
+    }
+    .deposit-row:hover .dep-btn { background: var(--navy-d); }
+    .deposit-foot { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-top: 1.2rem; }
+    .deposit-foot a { color: var(--navy); font-weight: 500; text-decoration: none; }
+    .deposit-foot a:hover { text-decoration: underline; }
+    .deposit-secure { display: flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; color: var(--muted); margin-top: 0.9rem; }
+    .deposit-secure svg { width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+    @media (max-width: 600px) {
+      .deposit-row { flex-direction: column; align-items: stretch; text-align: center; gap: 0.7rem; }
+      .deposit-row .dep-btn { width: 100%; }
+    }
+
+    footer {
+      text-align: center; padding: 3rem 2rem;
+      border-top: 1px solid var(--border); color: var(--muted);
+      font-size: 0.82rem; letter-spacing: 0.03em; background: var(--bg-alt);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--navy); }
+    .footer-entity { margin-bottom: 0.5rem; }
+    .footer-entity strong { color: var(--ink); font-weight: 600; }
+
+    /* ── SITE DISCLAIMER BAND ── */
+    .site-disclaimer {
+      padding: 2.2rem 6vw; background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .site-disclaimer p {
+      max-width: 900px; margin: 0 auto;
+      font-size: 0.78rem; line-height: 1.75; color: var(--muted);
+      text-align: center;
+    }
+    .site-disclaimer a { color: var(--navy); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ── HAMBURGER / MOBILE MENU ── */
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 150;
+      background: rgba(251, 250, 247, 0.99);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu ul { list-style: none; text-align: center; }
+    .mobile-menu ul li { padding: 0.9rem 0; }
+    .mobile-link {
+      font-family: var(--serif); font-size: 1.8rem; font-weight: 500;
+      color: var(--ink); text-decoration: none; transition: color 0.2s;
+    }
+    .mobile-link:hover { color: var(--navy); }
+    .mobile-menu-close { position: absolute; top: 1.4rem; right: 5vw; background: none; border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer; transition: color 0.2s; }
+    .mobile-menu-close:hover { color: var(--ink); }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 4px; }
+
+    .js-anim .fade-up { opacity: 0; transform: translateY(34px); }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      #intake-hero { padding: 112px 6vw 40px; }
+      section { padding: 2.75rem 6vw 3.25rem; }
+      .intake-form .row { grid-template-columns: 1fr; }
+      .btn { width: 100%; max-width: 300px; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js-anim .fade-up { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo" aria-label="ZKK Consulting LLC — home">
+      <svg class="nav-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <g fill="none" stroke-width="3">
+          <circle cx="32" cy="30" r="21" stroke="var(--navy)"/>
+          <circle cx="32" cy="34" r="13.5" stroke="var(--accent)"/>
+        </g>
+        <circle cx="32" cy="37.5" r="6.6" fill="var(--accent)"/>
+      </svg>
+      <span>ZKK Consulting</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#why">Why ZKK</a></li>
+      <li><a href="index.html#founders">Founders</a></li>
+      <li><a href="index.html#process">Process</a></li>
+      <li><a href="index.html#packages">Services</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="index.html#packages" class="nav-cta">Services</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">✕</button>
+    <ul>
+      <li><a href="index.html#why" class="mobile-link">Why ZKK</a></li>
+      <li><a href="index.html#founders" class="mobile-link">Founders</a></li>
+      <li><a href="index.html#process" class="mobile-link">Process</a></li>
+      <li><a href="index.html#packages" class="mobile-link">Services</a></li>
+      <li><a href="index.html#faq" class="mobile-link">FAQ</a></li>
+      <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+      <li><a href="mailto:info@zkkconsulting.com" class="mobile-link" style="color: var(--navy);">Email Us</a></li>
+    </ul>
+  </div>
+
+  <main>
+  <section id="intake-hero">
+    <div class="hero-eyebrow fade-up">Client Intake</div>
+    <h1 class="fade-up">Let's scope your project.</h1>
+    <p class="hero-desc fade-up">
+      A few quick questions so our scoping call starts at the answer, not the introduction.
+      Takes about two minutes, and we'll reply within one business day.
+    </p>
+  </section>
+
+  <section>
+    <div class="intake-wrap">
+      <div class="form-success" id="formSuccess" hidden>
+        <strong>Intake received.</strong> Thanks — we'll reply within one business day to confirm fit and point you to the right scope.
+      </div>
+      <form class="intake-form fade-up" id="intakeForm" action="https://formsubmit.co/info@zkkconsulting.com" method="POST">
+
+        <input type="hidden" name="_subject" value="New client intake — zkkconsulting.com" />
+        <input type="hidden" name="_cc" value="zolomon@zkkconsulting.com,jad@zkkconsulting.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://zkkconsulting.com/intake.html?sent=1" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="row">
+          <div class="field">
+            <label for="fName">Your name</label>
+            <input type="text" id="fName" name="name" required maxlength="80" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="fEmail">Email</label>
+            <input type="email" id="fEmail" name="email" required maxlength="120" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="fCompany">Company <span class="opt">(optional)</span></label>
+            <input type="text" id="fCompany" name="company" maxlength="100" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="fRole">Your role <span class="opt">(optional)</span></label>
+            <input type="text" id="fRole" name="role" maxlength="80" placeholder="Founder, CEO, VP…" autocomplete="organization-title" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fDevice">What's the device or product?</label>
+          <input type="text" id="fDevice" name="device" required maxlength="160" placeholder="One sentence is plenty, e.g. “wearable for remote cardiac monitoring”" />
+          <span class="hint">High level only. Save the proprietary details for after we have an NDA in place.</span>
+        </div>
+
+        <div class="field">
+          <label for="fStage">Where is it in development?</label>
+          <select id="fStage" name="stage" required>
+            <option value="" disabled selected>Select a stage…</option>
+            <option>Concept / early design</option>
+            <option>Working prototype</option>
+            <option>Pre-clinical / bench testing</option>
+            <option>Clinical testing / regulatory submission</option>
+            <option>Cleared or on the market</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="fDecision">What decision should this research support?</label>
+          <textarea id="fDecision" name="decision" required maxlength="600" placeholder="e.g. “We're raising a seed round and need defensible market sizing,” or “deciding between two indications.”"></textarea>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="fPackage">Which package looks closest?</label>
+            <select id="fPackage" name="package" required>
+              <option value="" disabled selected>Select one…</option>
+              <option>Market Brief ($499)</option>
+              <option>Market Report ($1,249)</option>
+              <option>Strategy Package ($2,499)</option>
+              <option>Custom scope — something outside the packages</option>
+              <option>Not sure yet, help me pick</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fTimeline">When do you need it?</label>
+            <select id="fTimeline" name="timeline" required>
+              <option value="" disabled selected>Select a timeline…</option>
+              <option>As soon as possible</option>
+              <option>Within 2–4 weeks</option>
+              <option>1–2 months out</option>
+              <option>Flexible / exploring</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fNotes">Anything else? <span class="opt">(optional)</span></label>
+          <textarea id="fNotes" name="notes" maxlength="600" placeholder="Deadlines, investor meetings, NDA requests, how you found us…"></textarea>
+        </div>
+
+        <div class="confid-note">
+          <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V7z"/></svg>
+          <span><strong>Confidential by default.</strong> Everything you share here is treated as private,
+          and we're glad to sign a mutual NDA before you send anything proprietary. Just say so above.
+          <br><br>
+          This form itself isn't covered by an NDA yet. Send a general description of your product and your
+          question, and hold anything proprietary until a mutual NDA is signed. An engagement begins only
+          when a Statement of Work is signed with ZKK Consulting LLC and the deposit is received.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Intake</button>
+        <p class="form-note">Your intake goes straight to our inbox — no email app needed. We'll reply within one business day.</p>
+      </form>
+
+      <div class="next-strip fade-up">
+        <div class="next-title">What happens next</div>
+        <ol>
+          <li><strong>Within 1 business day:</strong> we reply confirming fit and which package or custom scope matches.</li>
+          <li><strong>Scoping call:</strong> 30 minutes on your device, your market, and the question to answer.</li>
+          <li><strong>Kickoff:</strong> we send a Statement of Work to sign, then a Stripe invoice for the 50% deposit. Your timeline starts once both are in.</li>
+          <li><strong>On completion:</strong> the deliverable lands, and we invoice the remaining 50% separately.</li>
+        </ol>
+      </div>
+
+      <div class="deposit-strip fade-up" id="deposit">
+        <div class="deposit-head">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg>
+          How payment works
+        </div>
+        <p class="deposit-intro">
+          There is nothing to pay from this page. Once we've had our scoping call, we send a
+          <strong>Statement of Work</strong> confirming scope, deliverable, timeline, and price.
+          After you sign it, we email you a <strong>Stripe invoice for the 50% deposit</strong>, payable by card.
+          Your timeline starts once the signed SOW and the deposit are both in, along with
+          <strong>any files or information we identified before or during the call</strong> that we need to begin.
+          The <strong>remaining 50% is invoiced separately on completion</strong>, when the finished deliverable
+          is in your hands.
+        </p>
+        <div class="deposit-steps">
+          <div class="dep-step"><span class="dep-step-n">1</span><span class="dep-step-t"><strong>Scope confirmed</strong> on the call, then the SOW comes to you to sign.</span></div>
+          <div class="dep-step"><span class="dep-step-n">2</span><span class="dep-step-t"><strong>Deposit invoice</strong> arrives by email once the SOW is signed. 50% of the package price.</span></div>
+          <div class="dep-step"><span class="dep-step-n">3</span><span class="dep-step-t"><strong>Final invoice</strong> for the remaining 50% is sent on completion, with the deliverable.</span></div>
+        </div>
+        <div class="deposit-secure">
+          <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+          Invoices are issued and processed securely by Stripe. Your card details never touch this site.
+        </div>
+        <p class="deposit-foot">
+          We never ask for payment before scope is agreed and the SOW is signed. If you receive a request to
+          pay that doesn't follow that order, or that doesn't come from
+          <a href="mailto:info@zkkconsulting.com">info@zkkconsulting.com</a>,
+          <a href="mailto:zolomon@zkkconsulting.com">zolomon@zkkconsulting.com</a>, or
+          <a href="mailto:jad@zkkconsulting.com">jad@zkkconsulting.com</a>, treat it as suspicious
+          and email us directly. Payment, cancellation, and refund terms are set out in your
+          Statement of Work.
+        </p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <div class="site-disclaimer">
+    <p>
+      Reports, models, and other deliverables provided by ZKK Consulting LLC are business research and
+      analysis only. They are not legal, regulatory, medical, tax, accounting, or investment advice, and are
+      not a guarantee of funding, regulatory clearance, reimbursement, or financial results. Reimbursement and
+      coding information reflects publicly available sources as of the report date and is not billing or coding
+      guidance. Clients remain responsible for their own regulatory, coding, clinical, and business decisions.
+      <a href="legal.html">Read the full disclaimers</a>.
+    </p>
+  </div>
+
+  <footer>
+    <p class="footer-entity"><strong>ZKK Consulting LLC</strong> is a Texas limited liability company, co-founded by Zolomon Kaliser and Jad Haddad.</p>
+    <p>© 2026 ZKK Consulting LLC. All rights reserved. &nbsp;·&nbsp; <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="legal.html">Legal &amp; Disclaimers</a> &nbsp;·&nbsp; <a href="portfolio.html">Portfolio</a></p>
+  </footer>
+
+  <!-- Scroll-driven motion: GSAP + ScrollTrigger (free, open-source CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+      // PRE-SELECT PACKAGE FROM URL
+      var params = new URLSearchParams(window.location.search);
+      var pkgParam = (params.get('package') || '').toLowerCase();
+      var pkgMap = { brief: 'Market Brief', report: 'Market Report', strategy: 'Strategy Package' };
+      if (pkgMap[pkgParam]) {
+        var pkgSelect = document.getElementById('fPackage');
+        for (var i = 0; i < pkgSelect.options.length; i++) {
+          if (pkgSelect.options[i].text.indexOf(pkgMap[pkgParam]) === 0) { pkgSelect.selectedIndex = i; break; }
+        }
+      }
+      // SUCCESS MESSAGE AFTER FORMSUBMIT REDIRECT
+      if (params.get('sent') === '1') {
+        var success = document.getElementById('formSuccess');
+        var intakeForm = document.getElementById('intakeForm');
+        if (success && intakeForm) { success.hidden = false; intakeForm.hidden = true; success.scrollIntoView({ block: 'center' }); }
+      }
+
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hasGSAP  = typeof window.gsap !== 'undefined';
+      var hasST    = hasGSAP && typeof window.ScrollTrigger !== 'undefined';
+      var animate  = hasGSAP && !reduceMotion;
+      if (hasST) gsap.registerPlugin(ScrollTrigger);
+
+
+      // SCROLL REVEAL (GSAP)
+      if (animate) {
+        document.body.classList.add('js-anim');
+        gsap.set('.fade-up', { opacity: 0, y: 34 });
+        if (hasST) {
+          ScrollTrigger.batch('.fade-up', {
+            start: 'top 86%',
+            onEnter: function (els) {
+              gsap.to(els, { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.10, overwrite: true });
+            }
+          });
+          ScrollTrigger.refresh();
+        } else {
+          gsap.to('.fade-up', { opacity: 1, y: 0, duration: 0.85, stagger: 0.08 });
+        }
+      }
+
+      // NAV SHRINK
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        if ((window.pageYOffset || document.documentElement.scrollTop) > 30) nav.classList.add('shrink');
+        else nav.classList.remove('shrink');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // SMOOTH SCROLL + URL HASH
+      var navH = 72;
+      function scrollToTarget(target) {
+        var y = target.getBoundingClientRect().top + window.pageYOffset - navH + 1;
+        window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (ev) {
+          var id = link.getAttribute('href');
+          if (id === '#' || id.length < 2) return;
+          var target = document.querySelector(id);
+          if (!target) return;
+          ev.preventDefault();
+          scrollToTarget(target);
+          if (history.pushState) history.pushState(null, '', id);
+          else window.location.hash = id;
+        });
+      });
+      window.addEventListener('popstate', function () {
+        var h = window.location.hash;
+        if (h && h.length > 1) { var t = document.querySelector(h); if (t) scrollToTarget(t); }
+      });
+      if (window.location.hash && window.location.hash.length > 1) {
+        var initTarget = document.querySelector(window.location.hash);
+        if (initTarget) window.setTimeout(function () { scrollToTarget(initTarget); }, 60);
+      }
+
+      // HAMBURGER MOBILE MENU
+      var hamburger = document.getElementById('hamburger');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (hamburger) {
+        function closeMenu() {
+          hamburger.classList.remove('open');
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+        hamburger.addEventListener('click', function () {
+          var open = mobileMenu.classList.toggle('open');
+          hamburger.classList.toggle('open', open);
+          hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.body.style.overflow = open ? 'hidden' : '';
+        });
+        var mc = document.getElementById('mobileClose');
+        if (mc) mc.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(function (link) {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
