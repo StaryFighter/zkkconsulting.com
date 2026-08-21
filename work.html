@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Work | ZKK Consulting</title>
+
+  <meta name="description" content="Case studies organized by industry and challenge type, plus sample deliverables you can open and read. Client engagements and independent sample projects are labeled separately." />
+  <meta name="author" content="ZKK Consulting LLC" />
+  <meta name="theme-color" content="#fbfaf7" />
+  <link rel="canonical" href="https://zkkconsulting.com/work.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZKK Consulting LLC" />
+  <meta property="og:title" content="Our Work | ZKK Consulting" />
+  <meta property="og:description" content="Case studies organized by industry and challenge type, plus sample deliverables you can open and read. Client engagements and independent sample projects are labeled separately." />
+  <meta property="og:url" content="https://zkkconsulting.com/work.html" />
+  <meta property="og:image" content="https://zkkconsulting.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ZKK Consulting LLC, market research and business growth consulting." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Work | ZKK Consulting" />
+  <meta name="twitter:description" content="Case studies organized by industry and challenge type, plus sample deliverables you can open and read. Client engagements and independent sample projects are labeled separately." />
+  <meta name="twitter:image" content="https://zkkconsulting.com/og-image.png" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    /* ── DELIVERABLE PREVIEW DECK ── */
+    .hero-deck {
+      container-type: inline-size;
+      position: relative; margin: 0 auto; max-width: 1000px;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 64px rgba(28, 43, 58, 0.14);
+      background: var(--white);
+    }
+    .deck-viewport { position: relative; aspect-ratio: 1280 / 722; }
+    .deck-slide {
+      display: none; position: absolute; inset: 0;
+      flex-direction: column; text-align: left;
+      padding: 3.2cqw 3.4cqw 2.4cqw; background: var(--white);
+    }
+    .deck-slide.is-active { display: flex; animation: deckIn 0.42s ease both; }
+    @keyframes deckIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .deck-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 2cqw; }
+    .deck-eyebrow { font-size: 1.12cqw; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--accent); margin-bottom: 0.9cqw; }
+    .deck-eyebrow span { color: var(--muted); }
+    .deck-title { font-family: var(--serif); font-size: 2.5cqw; font-weight: 600; line-height: 1.15; color: var(--ink); letter-spacing: -0.01em; }
+    .deck-tag { flex: none; font-size: 0.95cqw; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 0.5cqw 1.1cqw; white-space: nowrap; }
+    .deck-body { flex: 1; display: flex; gap: 3cqw; margin-top: 2.4cqw; min-height: 0; }
+    .deck-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .deck-aside { width: 26cqw; flex: none; }
+    .deck-slide--fill .deck-main { justify-content: center; }
+    .deck-slide--fill .deck-aside { display: flex; flex-direction: column; justify-content: center; }
+    .deck-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 2cqw; padding-top: 1.2cqw; border-top: 1px solid var(--border); font-size: 1cqw; color: var(--muted); letter-spacing: 0.06em; }
+    .deck-foot strong { color: var(--ink); font-weight: 600; }
+    .deck-table { width: 100%; border-collapse: collapse; }
+    .deck-table th { text-align: left; font-size: 0.92cqw; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 0 0 0.9cqw; border-bottom: 1px solid var(--border); }
+    .deck-table td { font-size: 1.24cqw; color: var(--ink); padding: 1.05cqw 0; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .deck-table tbody th { font-size: 1.24cqw; font-weight: 600; color: var(--ink); text-transform: none; letter-spacing: 0; padding: 1.05cqw 0; border-bottom: 1px solid var(--border); }
+    .deck-table tr:last-child td, .deck-table tr:last-child th { border-bottom: none; }
+    .deck-table--wide td, .deck-table--wide tbody th { padding: 0.85cqw 0; }
+    .deck-table--airy td, .deck-table--airy tbody th { padding: var(--row-pad, 1.05cqw) 0; }
+    .deck-table .t-name { font-weight: 600; }
+    .deck-table .t-num { font-variant-numeric: tabular-nums; }
+    .deck-table th.t-r, .deck-table td.t-r { text-align: right; }
+    .deck-pill { display: inline-block; font-size: 0.95cqw; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--navy); background: var(--bg-alt); border-radius: 3px; padding: 0.35cqw 0.8cqw; }
+    .deck-notes-label { font-size: 0.92cqw; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding-bottom: 0.9cqw; border-bottom: 1px solid var(--border); margin-bottom: 1.2cqw; }
+    .deck-note { font-size: 1.02cqw; line-height: 1.6; color: var(--muted); margin-bottom: 1.2cqw; }
+    .funnel { display: flex; flex-direction: column; justify-content: center; gap: 2.4cqw; height: 100%; }
+    .funnel-row { display: flex; align-items: center; gap: 2cqw; }
+    .funnel-key { width: 6cqw; flex: none; font-size: 1.15cqw; letter-spacing: 0.14em; font-weight: 700; color: var(--navy); }
+    .funnel-track { flex: 1; min-width: 0; }
+    .funnel-bar { height: 2.6cqw; background: var(--navy); border-radius: 2px; min-width: 3px; }
+    .funnel-row:nth-child(2) .funnel-bar { background: #2f5480; }
+    .funnel-row:nth-child(3) .funnel-bar { background: var(--accent); }
+    .funnel-fig { width: 15cqw; flex: none; }
+    .funnel-val { font-family: var(--serif); font-size: 2.6cqw; font-weight: 600; color: var(--ink); line-height: 1.1; }
+    .funnel-pat { font-size: 1.05cqw; color: var(--muted); }
+    .funnel-note { font-size: 1cqw; line-height: 1.55; color: var(--muted); margin-top: 0.7cqw; }
+    .cov-label { font-size: 0.92cqw; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 1.2cqw; }
+    .cov-bar { display: flex; height: 1.6cqw; border-radius: 2px; overflow: hidden; margin-bottom: 1.4cqw; }
+    .cov-bar i { display: block; height: 100%; }
+    .cov-key { display: flex; align-items: center; gap: 0.8cqw; font-size: 1.05cqw; color: var(--ink); margin-bottom: 0.8cqw; }
+    .cov-key b { width: 0.9cqw; height: 0.9cqw; border-radius: 2px; flex: none; }
+    .cov-key span { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .cov-blend { margin-top: 1.8cqw; padding-top: 1.4cqw; border-top: 1px solid var(--border); }
+    .cov-blend-val { font-family: var(--serif); font-size: 2.2cqw; font-weight: 600; color: var(--ink); }
+    .chart { display: flex; align-items: flex-end; gap: 1.4cqw; height: 10cqw; margin-bottom: 1.2cqw; }
+    .chart-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 0.6cqw; height: 100%; }
+    .chart-val { font-size: 1cqw; font-weight: 600; color: var(--navy); font-variant-numeric: tabular-nums; }
+    .chart-bar { width: 100%; background: var(--navy); border-radius: 2px 2px 0 0; }
+    .chart-col:last-child .chart-bar { background: var(--accent); }
+    .deck-ctrl { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.7rem 1rem; border-top: 1px solid var(--border); background: var(--bg); }
+    .deck-dots { display: flex; gap: 0.5rem; align-items: center; }
+    .deck-dot { width: 30px; height: 3px; border: none; padding: 0; border-radius: 2px; cursor: pointer; background: var(--border); transition: background 0.2s; }
+    .deck-dot:hover { background: var(--muted); }
+    .deck-dot[aria-current="true"] { background: var(--navy); }
+    .deck-arrows { display: flex; gap: 0.4rem; }
+    .deck-arrow { width: 34px; height: 34px; border-radius: 50%; cursor: pointer; border: 1px solid var(--border); background: var(--white); color: var(--navy); font-size: 0.9rem; line-height: 1; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .deck-arrow:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .deck-count { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .deck-ctrl :focus-visible, .deck-viewport :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .deck-caption { margin: 0.85rem auto 0; max-width: 900px; padding: 0 0.2rem; font-size: 0.76rem; line-height: 1.6; color: var(--muted); text-align: center; }
+
+    @container (max-width: 760px) {
+      .deck-viewport { aspect-ratio: auto; }
+      .deck-slide { position: static; padding: 1.4rem 1.25rem 1.1rem; }
+      .deck-slide:not(.is-active) { display: none; }
+      .deck-head { flex-direction: column; gap: 0.6rem; }
+      .deck-eyebrow { font-size: 0.62rem; margin-bottom: 0.45rem; }
+      .deck-title { font-size: 1.3rem; }
+      .deck-tag { font-size: 0.56rem; padding: 0.25rem 0.6rem; }
+      .deck-body { flex-direction: column; gap: 1.4rem; margin-top: 1.3rem; }
+      .deck-aside { width: auto; }
+      .deck-foot { font-size: 0.62rem; margin-top: 1.3rem; padding-top: 0.8rem; }
+      .deck-table th { font-size: 0.56rem; padding-bottom: 0.5rem; }
+      .deck-table td, .deck-table tbody th { font-size: 0.78rem; padding: 0.55rem 0; }
+      .deck-table--wide td, .deck-table--wide tbody th { font-size: 0.66rem; padding: 0.45rem 0; }
+      .deck-table--airy td, .deck-table--airy tbody th { padding: 0.55rem 0; }
+      .deck-slide--fill .deck-main, .deck-slide--fill .deck-aside { justify-content: flex-start; }
+      .deck-table--wide th { font-size: 0.52rem; }
+      .deck-pill { font-size: 0.56rem; padding: 0.15rem 0.4rem; }
+      .deck-notes-label { font-size: 0.56rem; padding-bottom: 0.5rem; margin-bottom: 0.7rem; }
+      .deck-note { font-size: 0.72rem; margin-bottom: 0.7rem; }
+      .funnel { gap: 1.1rem; }
+      .funnel-row { flex-wrap: wrap; gap: 0.5rem 0.8rem; }
+      .funnel-key { width: auto; font-size: 0.7rem; }
+      .funnel-track { order: 3; flex-basis: 100%; }
+      .funnel-bar { height: 0.85rem; }
+      .funnel-fig { width: auto; margin-left: auto; text-align: right; }
+      .funnel-val { font-size: 1.35rem; }
+      .funnel-pat, .funnel-note { font-size: 0.72rem; }
+      .funnel-note { order: 4; flex-basis: 100%; margin-top: 0; text-align: left; }
+      .cov-label { font-size: 0.56rem; margin-bottom: 0.6rem; }
+      .cov-bar { height: 0.7rem; margin-bottom: 0.8rem; }
+      .cov-key { font-size: 0.75rem; gap: 0.45rem; margin-bottom: 0.45rem; }
+      .cov-key b { width: 0.55rem; height: 0.55rem; }
+      .cov-blend { margin-top: 0.9rem; padding-top: 0.8rem; }
+      .cov-blend-val { font-size: 1.2rem; }
+      .chart { height: 6.5rem; gap: 0.5rem; margin-bottom: 0.8rem; }
+      .chart-val { font-size: 0.6rem; }
+    }
+
+    /* ── SLOT PLACEHOLDER CARD ── */
+    .slot-card { border-style: dashed; border-color: #cec8b8; background: var(--bg-alt) !important; }
+    .slot-card:hover { transform: none; box-shadow: none; border-color: #cec8b8; }
+    .slot-label {
+      font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .slot-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; }
+    .slot-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.7; }
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo" aria-label="ZKK Consulting LLC, home">
+      <svg class="nav-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <g fill="none" stroke-width="3">
+          <circle cx="32" cy="30" r="21" stroke="var(--navy)"/>
+          <circle cx="32" cy="34" r="13.5" stroke="var(--accent)"/>
+        </g>
+        <circle cx="32" cy="37.5" r="6.6" fill="var(--accent)"/>
+      </svg>
+      <span>ZKK Consulting</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html" aria-current="page">Our Work</a></li>
+      <li><a href="expertise.html">Expertise</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="intake.html" class="nav-cta">Book a Consultation</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+    <ul>
+      <li><a href="services.html" class="mobile-link">Services</a></li>
+      <li><a href="work.html" class="mobile-link">Our Work</a></li>
+      <li><a href="expertise.html" class="mobile-link">Expertise</a></li>
+      <li><a href="team.html" class="mobile-link">Team</a></li>
+      <li><a href="referrals.html" class="mobile-link">Referral Program</a></li>
+      <li><a href="legal.html" class="mobile-link">Legal</a></li>
+      <li><a href="intake.html" class="mobile-link is-cta">Book a Consultation</a></li>
+      <li><a href="mailto:info@zkkconsulting.com" class="mobile-link is-cta">Email Us</a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow">Our Work</div>
+      <h1>What the research actually produces.</h1>
+      <p class="lede">
+        Case studies organized by industry and by the kind of problem they solved, plus sample deliverables
+        you can open and read. Client engagements and independent sample projects are labeled separately, so
+        you always know which is which.
+      </p>
+      <div class="hero-ctas">
+        <a href="#samples" class="btn btn-primary">Open a sample deliverable</a>
+        <a href="intake.html" class="btn btn-outline">Book a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" class="alt">
+    <div class="section-label fade-up">Case Studies</div>
+    <h2 class="fade-up">Challenge, solution, result.</h2>
+    <p class="section-intro fade-up">
+      Client engagements are shown in sanitized form and only where the client has agreed. Sample projects
+      are independent work we produced ourselves to demonstrate method, with no client involved and no real
+      company behind them.
+    </p>
+
+    <div class="filter-row fade-up" id="caseFilters" role="group" aria-label="Filter case studies by industry">
+      <button type="button" class="filter-chip is-active" data-filter="all">All</button>
+      <button type="button" class="filter-chip" data-filter="medtech">Medical devices</button>
+      <button type="button" class="filter-chip" data-filter="electronics">Electronics &amp; hardware</button>
+      <button type="button" class="filter-chip" data-filter="industrial">Industrial &amp; B2B</button>
+      <button type="button" class="filter-chip" data-filter="consumer">Consumer</button>
+      <button type="button" class="filter-chip" data-filter="ip">Patent &amp; IP</button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+         ADDING A CASE STUDY
+         Copy the block below, paste it inside <div class="case-grid">, and edit.
+         · data-industry must be one of: medtech, electronics, industrial,
+           consumer, ip  (add a matching filter chip above for a new value)
+         · Use badge-client for a real engagement, badge-sample for our own
+           sample work. Never label sample work as a client engagement.
+         · "Result" should be a measurable outcome where one exists. Where it
+           does not, describe what the deliverable enabled or provided.
+           Do not promise or imply outcomes.
+
+    <article class="case-card card fade-up" data-industry="INDUSTRY">
+      <div class="case-top">
+        <div class="case-badges">
+          <span class="badge badge-client">Client engagement</span>
+          <span class="badge badge-industry">Industry label</span>
+        </div>
+        <div class="case-title">Short descriptive title</div>
+        <div class="case-sub">Package or service used</div>
+      </div>
+      <div class="case-body">
+        <div class="case-block"><div class="cb-label">Challenge</div><p>What the company needed.</p></div>
+        <div class="case-block"><div class="cb-label">Solution</div><p>What ZKK delivered.</p></div>
+        <div class="case-block"><div class="cb-label">Result</div><p>The measurable outcome, or what the deliverable enabled.</p></div>
+      </div>
+      <div class="case-foot">
+        <span class="cf-note">Details published with client permission.</span>
+        <a href="#">View the deliverable &#8599;</a>
+      </div>
+    </article>
+         ══════════════════════════════════════════════════════════════════════ -->
+
+    <div class="case-grid" id="caseGrid">
+
+      <article class="case-card card fade-up" data-industry="medtech">
+        <div class="case-top">
+          <div class="case-badges">
+            <span class="badge badge-sample">Sample project</span>
+            <span class="badge badge-industry">Medical devices</span>
+          </div>
+          <div class="case-title">Competitive landscape for a continuous monitoring device</div>
+          <div class="case-sub">Launchpad-scope sample</div>
+        </div>
+        <div class="case-body">
+          <div class="case-block"><div class="cb-label">Challenge</div><p>An early-stage company entering a crowded monitoring category needs to know who is already there, how each competitor is positioned, and where a new entrant could credibly differentiate before committing to a product direction.</p></div>
+          <div class="case-block"><div class="cb-label">Solution</div><p>A foundational market brief: the competitive field mapped, the closest competitors profiled on product and positioning, differentiation angles laid out, and the market context that drives demand, every figure carrying its source.</p></div>
+          <div class="case-block"><div class="cb-label">Result</div><p>A short, circulatable document that gives a founding team a defensible read on the field and a clear list of the assumptions worth testing next. This is the deliverable format a Launchpad engagement produces.</p></div>
+        </div>
+        <div class="case-foot">
+          <span class="cf-note">Independent sample. Figures are illustrative.</span>
+          <a href="samples/Market_Brief_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer">Read the sample &#8599;</a>
+        </div>
+      </article>
+
+      <article class="case-card card fade-up" data-industry="medtech">
+        <div class="case-top">
+          <div class="case-badges">
+            <span class="badge badge-sample">Sample project</span>
+            <span class="badge badge-industry">Medical devices</span>
+          </div>
+          <div class="case-title">Market sizing and landscape for a fundraising conversation</div>
+          <div class="case-sub">Growth-scope sample</div>
+        </div>
+        <div class="case-body">
+          <div class="case-block"><div class="cb-label">Challenge</div><p>A company preparing for an investor conversation needs market sizing it can actually defend, not a number pulled from a press release, plus a competitive picture that survives a diligence question.</p></div>
+          <div class="case-block"><div class="cb-label">Solution</div><p>A full market report: TAM, SAM, and SOM built from traceable inputs with every assumption stated, expanded competitive analysis, segment and channel research, and a source appendix an outside reader can check.</p></div>
+          <div class="case-block"><div class="cb-label">Result</div><p>Sizing a team can present and stand behind under questioning, with the arithmetic visible rather than hidden. This is the deliverable format a Growth engagement produces.</p></div>
+        </div>
+        <div class="case-foot">
+          <span class="cf-note">Independent sample. Figures are illustrative.</span>
+          <a href="samples/Market_Report_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer">Read the sample &#8599;</a>
+        </div>
+      </article>
+
+      <article class="case-card card fade-up" data-industry="medtech">
+        <div class="case-top">
+          <div class="case-badges">
+            <span class="badge badge-sample">Sample project</span>
+            <span class="badge badge-industry">Medical devices</span>
+          </div>
+          <div class="case-title">Full commercial picture with a five-year model</div>
+          <div class="case-sub">Enterprise-scope sample</div>
+        </div>
+        <div class="case-body">
+          <div class="case-block"><div class="cb-label">Challenge</div><p>A company past the orientation stage needs the commercial layer: what to charge, how to reach the buyer, and what the revenue and cost picture looks like across five years under stated assumptions.</p></div>
+          <div class="case-block"><div class="cb-label">Solution</div><p>Everything in the market report plus go-to-market and pricing analysis, an editable five-year revenue, COGS, and operating expense model, and research-supported considerations tied back to the underlying sources.</p></div>
+          <div class="case-block"><div class="cb-label">Result</div><p>A workbook the team keeps using after the engagement closes, with the drivers isolated so they can rerun their own scenarios. This is the deliverable format an Enterprise engagement produces.</p></div>
+        </div>
+        <div class="case-foot">
+          <span class="cf-note">Independent sample. Figures are illustrative.</span>
+          <a href="samples/Strategy_Package_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer">Read the sample &#8599;</a>
+        </div>
+      </article>
+
+      <!-- ── PLACEHOLDER SLOT — replace with a real client engagement or delete ── -->
+      <article class="case-card card slot-card fade-up" data-industry="industrial">
+        <div class="case-top">
+          <div class="slot-label">Placeholder &middot; replace before publishing</div>
+          <h3>Client engagement slot</h3>
+        </div>
+        <div class="case-body">
+          <p>Reserved for a sanitized client engagement. Copy the commented template above this grid in the
+          page source, fill in Challenge, Solution, and Result, set <code>data-industry</code>, and use the
+          <code>badge-client</code> label. Publish a client name or logo only where the client has agreed in
+          writing. Delete this placeholder card once real engagements fill the grid.</p>
+        </div>
+      </article>
+
+      <!-- ── PLACEHOLDER SLOT — replace with a non-medtech sample project or delete ── -->
+      <article class="case-card card slot-card fade-up" data-industry="consumer">
+        <div class="case-top">
+          <div class="slot-label">Placeholder &middot; replace before publishing</div>
+          <h3>Cross-industry sample slot</h3>
+        </div>
+        <div class="case-body">
+          <p>Reserved for an independent sample project outside medtech, for example a consumer product
+          category, an industrial component market, or a software category. Same template, but keep the
+          <code>badge-sample</code> label so it is never mistaken for a client engagement.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="section-intro fade-up" id="caseEmpty" hidden style="margin-top:1.5rem;">
+      No case studies in that category yet. <a href="intake.html">Ask us about your industry</a> and we will
+      tell you what comparable work we have done.
+    </p>
+  </section>
+
+  <section id="samples">
+    <div class="section-label fade-up">Deliverables</div>
+    <h2 class="fade-up">Inside a report.</h2>
+    <p class="section-intro fade-up">
+      An excerpt from a sample market assessment, showing how the analysis is laid out: the competitive
+      field, the sizing arithmetic, the pricing and channel picture, and the revenue model.
+    </p>
+
+    <figure class="hero-deck fade-up" id="heroDeck" role="group" aria-roledescription="carousel"
+            aria-label="Sample market assessment deliverable, four sections">
+      <div class="deck-viewport" id="deckViewport">
+
+        <section class="deck-slide deck-slide--fill is-active" role="group" aria-roledescription="slide" aria-label="1 of 4: Competitive landscape">
+          <div class="deck-head">
+            <div>
+              <div class="deck-eyebrow">01 &middot; Competitive landscape <span>&middot; Illustrative</span></div>
+              <h3 class="deck-title">Direct competitors in scope</h3>
+            </div>
+            <div class="deck-tag">Illustrative sample data</div>
+          </div>
+          <div class="deck-body">
+            <div class="deck-main">
+              <table class="deck-table deck-table--airy" style="--row-pad:2cqw">
+                <thead>
+                  <tr><th scope="col">Product</th><th scope="col">Primary channel</th><th scope="col" class="t-r">List price</th><th scope="col" class="t-r">Position</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="t-name">Vantage Series</td><td>Direct enterprise</td><td class="t-num t-r">$14,200</td><td class="t-r"><span class="deck-pill">Incumbent</span></td></tr>
+                  <tr><td class="t-name">Nuvelle A2</td><td>Distributor</td><td class="t-num t-r">$9,800</td><td class="t-r"><span class="deck-pill">Challenger</span></td></tr>
+                  <tr><td class="t-name">Perisys One</td><td>Direct + reseller</td><td class="t-num t-r">$11,400</td><td class="t-r"><span class="deck-pill">Value</span></td></tr>
+                  <tr><td class="t-name">Orbis Meridian</td><td>Direct enterprise</td><td class="t-num t-r">$26,500</td><td class="t-r"><span class="deck-pill">Premium</span></td></tr>
+                  <tr><td class="t-name">Halden Loop</td><td>Online / self-serve</td><td class="t-num t-r">$6,100</td><td class="t-r"><span class="deck-pill">Entrant</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <aside class="deck-aside">
+              <div class="deck-notes-label">Source notes</div>
+              <p class="deck-note">Public product documentation and registry filings, Q2 2025. n = 14 products screened, 5 in direct scope.</p>
+              <p class="deck-note">Price is published list from three enterprise contracts; net of rebate not disclosed.</p>
+              <p class="deck-note">Position assigned from feature set, stated target segment, and installed-base signals.</p>
+            </aside>
+          </div>
+          <div class="deck-foot"><span><strong>ZKK Consulting</strong> &middot; Market assessment</span><span>01 / 04</span></div>
+        </section>
+
+        <section class="deck-slide" role="group" aria-roledescription="slide" aria-label="2 of 4: Market sizing">
+          <div class="deck-head">
+            <div>
+              <div class="deck-eyebrow">02 &middot; Market sizing <span>&middot; Illustrative</span></div>
+              <h3 class="deck-title">Total, served and obtainable</h3>
+            </div>
+            <div class="deck-tag">Illustrative sample data</div>
+          </div>
+          <div class="deck-body">
+            <div class="deck-main">
+              <div class="funnel">
+                <div class="funnel-row">
+                  <div class="funnel-key">TAM</div>
+                  <div class="funnel-track">
+                    <div class="funnel-bar" style="width:100%"></div>
+                    <p class="funnel-note">Addressable installed base from public industry statistics, times a $740 blended unit price.</p>
+                  </div>
+                  <div class="funnel-fig"><div class="funnel-val">$1.8B</div><div class="funnel-pat">2.4M units</div></div>
+                </div>
+                <div class="funnel-row">
+                  <div class="funnel-key">SAM</div>
+                  <div class="funnel-track">
+                    <div class="funnel-bar" style="width:25.7%"></div>
+                    <p class="funnel-note">26% of the base sits in the segment and geography this product can actually serve.</p>
+                  </div>
+                  <div class="funnel-fig"><div class="funnel-val">$462M</div><div class="funnel-pat">610K units</div></div>
+                </div>
+                <div class="funnel-row">
+                  <div class="funnel-key">SOM</div>
+                  <div class="funnel-track">
+                    <div class="funnel-bar" style="width:3.2%"></div>
+                    <p class="funnel-note">12.6% of SAM by year five across 340 target accounts, at the stated win rate.</p>
+                  </div>
+                  <div class="funnel-fig"><div class="funnel-val">$58M</div><div class="funnel-pat">74K units</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="deck-foot"><span><strong>ZKK Consulting</strong> &middot; Market assessment</span><span>02 / 04</span></div>
+        </section>
+
+        <section class="deck-slide deck-slide--fill" role="group" aria-roledescription="slide" aria-label="3 of 4: Pricing and channel">
+          <div class="deck-head">
+            <div>
+              <div class="deck-eyebrow">03 &middot; Pricing &amp; channel <span>&middot; Illustrative</span></div>
+              <h3 class="deck-title">Where the margin goes</h3>
+            </div>
+            <div class="deck-tag">Illustrative sample data</div>
+          </div>
+          <div class="deck-body">
+            <div class="deck-main">
+              <table class="deck-table deck-table--airy" style="--row-pad:2.6cqw">
+                <thead>
+                  <tr><th scope="col">Route to market</th><th scope="col">Typical discount</th><th scope="col">Cycle</th><th scope="col" class="t-r">Net per unit</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="t-name">Direct enterprise</td><td>8 &ndash; 12%</td><td>Long</td><td class="t-num t-r">$1,284</td></tr>
+                  <tr><td class="t-name">National distributor</td><td>22 &ndash; 30%</td><td>Medium</td><td class="t-num t-r">$968</td></tr>
+                  <tr><td class="t-name">Regional reseller</td><td>18 &ndash; 25%</td><td>Medium</td><td class="t-num t-r">$1,012</td></tr>
+                  <tr><td class="t-name">Online / self-serve</td><td>0 &ndash; 5%</td><td>Short</td><td class="t-num t-r">$1,340</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <aside class="deck-aside">
+              <div class="cov-label">Volume by channel</div>
+              <div class="cov-bar" role="img" aria-label="Channel split: direct 58 percent, distribution 27 percent, online 15 percent">
+                <i style="width:58%;background:var(--navy)"></i>
+                <i style="width:27%;background:#2f5480"></i>
+                <i style="width:15%;background:var(--border)"></i>
+              </div>
+              <div class="cov-key"><b style="background:var(--navy)"></b>Direct <span>58%</span></div>
+              <div class="cov-key"><b style="background:#2f5480"></b>Distribution <span>27%</span></div>
+              <div class="cov-key"><b style="background:var(--border)"></b>Online <span>15%</span></div>
+              <div class="cov-blend">
+                <div class="cov-label">Blended net price</div>
+                <div class="cov-blend-val">$842</div>
+                <p class="deck-note">Weighted across the channel mix above, before rebates. Derived from published list pricing and stated distributor terms.</p>
+              </div>
+            </aside>
+          </div>
+          <div class="deck-foot"><span><strong>ZKK Consulting</strong> &middot; Market assessment</span><span>03 / 04</span></div>
+        </section>
+
+        <section class="deck-slide" role="group" aria-roledescription="slide" aria-label="4 of 4: Five-year revenue model">
+          <div class="deck-head">
+            <div>
+              <div class="deck-eyebrow">04 &middot; Five-year revenue model <span>&middot; Illustrative</span></div>
+              <h3 class="deck-title">Base case, direct sales</h3>
+            </div>
+            <div class="deck-tag">Illustrative sample data</div>
+          </div>
+          <div class="deck-body">
+            <div class="deck-main">
+              <div class="chart" role="img" aria-label="Revenue by year in millions: 2.1, 6.2, 13.9, 26.5, 40.9">
+                <div class="chart-col"><div class="chart-val">2.1</div><div class="chart-bar" style="height:5%"></div></div>
+                <div class="chart-col"><div class="chart-val">6.2</div><div class="chart-bar" style="height:15%"></div></div>
+                <div class="chart-col"><div class="chart-val">13.9</div><div class="chart-bar" style="height:34%"></div></div>
+                <div class="chart-col"><div class="chart-val">26.5</div><div class="chart-bar" style="height:65%"></div></div>
+                <div class="chart-col"><div class="chart-val">40.9</div><div class="chart-bar" style="height:100%"></div></div>
+              </div>
+              <table class="deck-table deck-table--wide">
+                <thead>
+                  <tr><th scope="col">Revenue, $M</th><th scope="col" class="t-r">Y1</th><th scope="col" class="t-r">Y2</th><th scope="col" class="t-r">Y3</th><th scope="col" class="t-r">Y4</th><th scope="col" class="t-r">Y5</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row" class="t-name">Units</th><td class="t-num t-r">210</td><td class="t-num t-r">640</td><td class="t-num t-r">1,480</td><td class="t-num t-r">2,900</td><td class="t-num t-r">4,600</td></tr>
+                  <tr><th scope="row" class="t-name">ASP</th><td class="t-num t-r">9,800</td><td class="t-num t-r">9,650</td><td class="t-num t-r">9,400</td><td class="t-num t-r">9,150</td><td class="t-num t-r">8,900</td></tr>
+                  <tr><th scope="row" class="t-name">Revenue $M</th><td class="t-num t-r">2.1</td><td class="t-num t-r">6.2</td><td class="t-num t-r">13.9</td><td class="t-num t-r">26.5</td><td class="t-num t-r">40.9</td></tr>
+                  <tr><th scope="row" class="t-name">COGS $M</th><td class="t-num t-r">1.0</td><td class="t-num t-r">2.7</td><td class="t-num t-r">5.6</td><td class="t-num t-r">10.1</td><td class="t-num t-r">14.7</td></tr>
+                  <tr><th scope="row" class="t-name">Gross margin %</th><td class="t-num t-r">52</td><td class="t-num t-r">56</td><td class="t-num t-r">60</td><td class="t-num t-r">62</td><td class="t-num t-r">64</td></tr>
+                </tbody>
+              </table>
+              <p class="deck-note" style="margin-top:1.2cqw">Illustrative sample data. Assumes 340 target accounts and 3.4% annual price erosion.</p>
+            </div>
+          </div>
+          <div class="deck-foot"><span><strong>ZKK Consulting</strong> &middot; Market assessment</span><span>04 / 04</span></div>
+        </section>
+      </div>
+
+      <div class="deck-ctrl">
+        <div class="deck-dots" id="deckDots" aria-label="Choose a section"></div>
+        <span class="deck-count" id="deckCount">01 / 04</span>
+        <div class="deck-arrows">
+          <button class="deck-arrow" type="button" id="deckPrev" aria-label="Previous section">&lsaquo;</button>
+          <button class="deck-arrow" type="button" id="deckNext" aria-label="Next section">&rsaquo;</button>
+        </div>
+      </div>
+      <figcaption class="deck-caption">Excerpt from a sample market assessment. All companies, products, prices, and figures shown are fictitious and included for illustration only. They are not client data and do not represent any real product, company, or engagement.</figcaption>
+    </figure>
+
+    <div class="wrap-narrow fade-up" style="margin-top:2.8rem;">
+      <div class="grid-3" style="gap:1.2rem;">
+        <a class="card addon-card" href="samples/Market_Brief_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+          <div class="addon-head"><span class="addon-name">Sample market brief</span><span class="addon-price">PDF &#8599;</span></div>
+          <p>The shorter format: competitive field, closest competitors, positioning, and market context.</p>
+        </a>
+        <a class="card addon-card" href="samples/Market_Report_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+          <div class="addon-head"><span class="addon-name">Sample market report</span><span class="addon-price">PDF &#8599;</span></div>
+          <p>The full format: sizing with documented assumptions, expanded competitive analysis, source appendix.</p>
+        </a>
+        <a class="card addon-card" href="samples/Strategy_Package_CGM_SAMPLE.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+          <div class="addon-head"><span class="addon-name">Sample strategy excerpt</span><span class="addon-price">PDF &#8599;</span></div>
+          <p>The commercial layer: go-to-market, pricing analysis, and the five-year model structure.</p>
+        </a>
+      </div>
+      <p class="notice-plain" style="margin-top:1.6rem;">
+        <strong>These are independent samples.</strong> They were produced by ZKK Consulting to demonstrate
+        format and method. No client was involved, and every company, product, price, and figure in them is
+        fictitious. Sanitized client deliverables are published only where a client has agreed in writing,
+        and are labeled as client engagements when they are.
+      </p>
+    </div>
+  </section>
+
+  <section class="alt cta-band">
+    <div class="section-label fade-up">Your Project</div>
+    <p class="cta-headline fade-up">Your industry is probably on the list.</p>
+    <p class="cta-sub fade-up">
+      We research across sectors and take on scopes that are not shown here. Describe what you need and we
+      will tell you what comparable work we have done and what a realistic scope looks like.
+    </p>
+    <div class="hero-ctas fade-up">
+      <a href="intake.html" class="btn btn-primary">Book a Consultation</a>
+      <a href="services.html" class="btn btn-outline">Services &amp; pricing</a>
+    </div>
+  </section>
+  </main>
+
+  <div class="site-disclaimer">
+    <p>
+      Reports, models, and other deliverables provided by ZKK Consulting LLC are business research and
+      analysis only. They are not legal, regulatory, medical, clinical, tax, accounting, or investment
+      advice, and are not a guarantee of funding, regulatory clearance, reimbursement, patent outcomes, or
+      financial results. Regulatory, patent, and reimbursement research reflects publicly available sources
+      as of the report date. Clients remain responsible for their own regulatory, legal, clinical, and
+      business decisions and should retain qualified professionals where determinations or representation
+      are required. <a href="legal.html">Read the full disclaimers</a>.
+    </p>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-brand"><svg  viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <g fill="none" stroke-width="3">
+            <circle cx="32" cy="30" r="21" stroke="var(--navy)"/>
+            <circle cx="32" cy="34" r="13.5" stroke="var(--accent)"/>
+          </g>
+          <circle cx="32" cy="37.5" r="6.6" fill="var(--accent)"/>
+        </svg><span>ZKK Consulting</span></a>
+        <p class="footer-about">
+          Market research and business growth consulting. We research the market, the competition, and the
+          landscape around a decision, then hand you the organized analysis behind it.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#packages">Core packages</a></li>
+          <li><a href="services.html#patent">Patent landscape analysis</a></li>
+          <li><a href="services.html#addons">Add-ons</a></li>
+          <li><a href="services.html#bundles">Bundles</a></li>
+          <li><a href="services.html#formatting">Document formatting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="work.html">Our work</a></li>
+          <li><a href="expertise.html">Specialized expertise</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="referrals.html">Referral program</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="intake.html">Book a consultation</a></li>
+          <li><a href="mailto:info@zkkconsulting.com">info@zkkconsulting.com</a></li>
+          <li><a href="mailto:zolomon@zkkconsulting.com">zolomon@zkkconsulting.com</a></li>
+          <li><a href="mailto:jad@zkkconsulting.com">jad@zkkconsulting.com</a></li>
+          <li><a href="legal.html">Legal &amp; disclaimers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-entity"><strong>ZKK Consulting LLC</strong> is a Texas limited liability company, co-founded by Zolomon Kaliser and Jad Haddad.</p>
+      <p>&copy; 2026 ZKK Consulting LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/site.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var reduceMotion = (window.ZKK && window.ZKK.reduceMotion) || false;
+
+      /* ── DELIVERABLE DECK ── */
+      var deck = document.getElementById('heroDeck');
+      if (deck) {
+        var slides = [].slice.call(deck.querySelectorAll('.deck-slide'));
+        var dotsBox = document.getElementById('deckDots');
+        var countEl = document.getElementById('deckCount');
+        var idx = 0, timer = null, dots = [], halted = false;
+        var labels = ['Competitive landscape', 'Market sizing', 'Pricing & channel', 'Five-year revenue model'];
+        var DELAY = 9000;
+
+        function pad(n) { return (n < 10 ? '0' : '') + n; }
+        function show(n, focusDot) {
+          idx = (n + slides.length) % slides.length;
+          slides.forEach(function (s, i) { s.classList.toggle('is-active', i === idx); });
+          dots.forEach(function (d, i) {
+            d.setAttribute('aria-current', i === idx ? 'true' : 'false');
+            d.tabIndex = i === idx ? 0 : -1;
+          });
+          countEl.textContent = pad(idx + 1) + ' / ' + pad(slides.length);
+          if (focusDot && dots[idx]) dots[idx].focus();
+        }
+        slides.forEach(function (s, i) {
+          var d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'deck-dot';
+          d.setAttribute('aria-label', 'Section ' + (i + 1) + ': ' + (labels[i] || ''));
+          d.onclick = function () { halt(); show(i); };
+          dotsBox.appendChild(d);
+          dots.push(d);
+        });
+        function next() { show(idx + 1); }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+        function start() { if (!reduceMotion && !halted && !timer) timer = setInterval(next, DELAY); }
+        function halt() { halted = true; stop(); }
+
+        document.getElementById('deckPrev').onclick = function () { halt(); show(idx - 1); };
+        document.getElementById('deckNext').onclick = function () { halt(); show(idx + 1); };
+        deck.addEventListener('mouseenter', stop);
+        deck.addEventListener('mouseleave', start);
+        deck.addEventListener('focusin', stop);
+        deck.addEventListener('focusout', function (e) { if (!deck.contains(e.relatedTarget)) start(); });
+        document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+        dotsBox.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); halt(); show(idx - 1, true); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); halt(); show(idx + 1, true); }
+        });
+        var x0 = null;
+        deck.addEventListener('touchstart', function (e) { halt(); x0 = e.changedTouches[0].clientX; }, { passive: true });
+        deck.addEventListener('touchend', function (e) {
+          if (x0 === null) return;
+          var dx = e.changedTouches[0].clientX - x0;
+          if (Math.abs(dx) > 45) show(idx + (dx < 0 ? 1 : -1));
+          x0 = null;
+        }, { passive: true });
+        show(0);
+        start();
+      }
+
+      /* ── CASE STUDY FILTERS ── */
+      var chips = [].slice.call(document.querySelectorAll('#caseFilters .filter-chip'));
+      var cards = [].slice.call(document.querySelectorAll('#caseGrid .case-card'));
+      var emptyMsg = document.getElementById('caseEmpty');
+      if (chips.length && cards.length) {
+        chips.forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            var f = chip.getAttribute('data-filter');
+            chips.forEach(function (c) { c.classList.toggle('is-active', c === chip); });
+            var shown = 0;
+            cards.forEach(function (card) {
+              var match = (f === 'all') || (card.getAttribute('data-industry') === f);
+              card.hidden = !match;
+              if (match) shown++;
+            });
+            if (emptyMsg) emptyMsg.hidden = shown > 0;
+            if (window.ScrollTrigger && ScrollTrigger.refresh) ScrollTrigger.refresh();
+          });
+        });
+      }
+    })();
+
+  </script>
+
+</body>
+</html>

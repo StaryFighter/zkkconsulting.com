@@ -14,54 +14,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #fbfaf7; --bg-alt: #f3f1ea; --white: #fff; --ink: #1c2b3a;
-      --navy: #1f3a5f; --navy-d: #16293f; --accent: #2e6e63; --muted: #5b6573; --border: #e4e0d6;
-      --serif: 'Lora', Georgia, serif; --sans: 'Inter', system-ui, sans-serif;
-    }
-    body {
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
-      color: var(--ink); font-family: var(--sans); line-height: 1.7;
-      min-height: 100vh; display: flex; flex-direction: column;
-    }
-    nav {
-      display: flex; align-items: center; padding: 1.1rem 5vw;
-      background: rgba(251,250,247,.95); border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); text-decoration: none; }
-    .nav-mark { width: 30px; height: 30px; flex: none; display: block; }
-
-    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 5vw; text-align: center; }
-    .inner { max-width: 560px; }
-    .eyebrow {
-      font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; color: var(--accent);
-      font-weight: 600; margin-bottom: 1.4rem; display: inline-flex; align-items: center; gap: .8rem;
-    }
-    .eyebrow::before, .eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: .5; }
-    h1 { font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 600; line-height: 1.1; margin-bottom: 1.2rem; }
-    p.lede { color: var(--muted); margin-bottom: 2.4rem; }
-    .ctas { display: flex; gap: .9rem; flex-wrap: wrap; justify-content: center; }
-    .btn {
-      display: inline-flex; align-items: center; padding: .85rem 1.9rem;
-      font-size: .82rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
-      text-decoration: none; border-radius: 4px; transition: all .22s;
-    }
-    .btn-primary { background: var(--navy); color: var(--white); }
-    .btn-primary:hover { background: var(--navy-d); transform: translateY(-1px); }
-    .btn-outline { color: var(--navy); border: 1px solid var(--navy); }
-    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-1px); }
-
-    footer { text-align: center; padding: 2rem 5vw; border-top: 1px solid var(--border); font-size: .8rem; color: var(--muted); }
-    footer a { color: var(--navy); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+    .nf-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 140px 6vw 60px; text-align: center; }
+    .nf-inner { max-width: 620px; }
+    .nf-links { margin-top: 2rem; font-size: .88rem; color: var(--muted); }
+    .nf-links a { color: var(--navy); font-weight: 500; text-decoration: none; }
+    .nf-links a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <nav>
+  <nav id="nav">
     <a href="/" class="nav-logo" aria-label="ZKK Consulting LLC, home">
       <svg class="nav-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
         <g fill="none" stroke-width="3">
@@ -72,26 +37,37 @@
       </svg>
       <span>ZKK Consulting</span>
     </a>
+    <a href="/" class="nav-back">&larr; Back to site</a>
   </nav>
 
-  <main>
-    <div class="inner">
+  <main class="nf-main">
+    <div class="nf-inner">
       <div class="eyebrow">Error 404</div>
       <h1>This page doesn't exist.</h1>
-      <p class="lede">
+      <p class="lede" style="color:var(--muted);">
         The link may be out of date, or the address may have a typo in it. Everything on the site is
         reachable from the homepage.
       </p>
-      <div class="ctas">
+      <div class="hero-ctas" style="margin-top:2rem;">
         <a href="/" class="btn btn-primary">Go to homepage</a>
-        <a href="/portfolio.html" class="btn btn-outline">Founders</a>
+        <a href="/services.html" class="btn btn-outline">Services &amp; pricing</a>
         <a href="mailto:info@zkkconsulting.com" class="btn btn-outline">Email us</a>
       </div>
+      <p class="nf-links">
+        <a href="/work.html">Our Work</a> &middot;
+        <a href="/expertise.html">Expertise</a> &middot;
+        <a href="/team.html">Team</a> &middot;
+        <a href="/referrals.html">Referrals</a> &middot;
+        <a href="/legal.html">Legal</a>
+      </p>
     </div>
   </main>
 
   <footer>
-    <p><strong>ZKK Consulting LLC</strong> · a Texas limited liability company &nbsp;·&nbsp; <a href="/legal.html">Legal &amp; Disclaimers</a></p>
+    <div class="footer-bottom" style="border-top:none;padding-top:0;">
+      <p class="footer-entity"><strong>ZKK Consulting LLC</strong> is a Texas limited liability company.</p>
+      <p>&copy; 2026 ZKK Consulting LLC. &nbsp;&middot;&nbsp; <a href="/legal.html">Legal &amp; Disclaimers</a></p>
+    </div>
   </footer>
 
 </body>
