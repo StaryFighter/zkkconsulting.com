@@ -653,6 +653,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 @media (max-width: 640px) {
   section { padding: 3.2rem 6vw; }
+  .logo-slot {
+    min-width: 120px;
+    height: 50px;
+    padding: 0.4rem 0.7rem;
+  }
+  .logo-slot img {
+    max-height: 36px !important;
+    height: auto !important;
+    width: auto;
+  }
   .page-hero { padding: 116px 6vw 44px; }
   .hero-ctas { flex-direction: column; align-items: center; gap: 0.7rem; }
   .btn { width: 100%; max-width: 320px; }
