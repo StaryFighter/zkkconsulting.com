@@ -279,7 +279,7 @@ section.alt .card { background: var(--bg); }
   font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--muted); text-align: center; line-height: 1.35;
 }
-.logo-slot img { max-height: 40px; width: auto; display: block; }
+.logo-slot img { max-height: 100px; width: auto; display: block; }
 .logo-slot.filled { border-style: solid; border-color: var(--border); }
 .logo-note { text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 0.9rem; }
 
@@ -559,9 +559,9 @@ section.alt .terms-item { background: var(--bg); }
 .process-grid .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
 
 /* ── FOUNDER CARDS ───────────────────────────────────────────────── */
-.founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; max-width: 1050px; margin: 2.6rem auto 0; align-items: start; }
-.founder-card { padding: 2.1rem 2rem; }
-.founder-head { display: flex; gap: 1.2rem; align-items: center; padding-bottom: 1.2rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+.founders-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; max-width: 780px; margin: 2.6rem auto 0; align-items: start; }.founder-card { padding: 2.1rem 2rem; }
+.founder-head { display: flex; gap: 1.2rem; align-items: center; padding-bottom: 1.4rem; margin-bottom: 1.6rem; border-bottom: 1px solid var(--border); }
+.founder-card { padding: 2.5rem 2.4rem; }
 .headshot { width: 96px; height: 96px; border-radius: 50%; flex-shrink: 0; object-fit: cover; display: block; }
 .headshot-ph {
   display: flex; align-items: center; justify-content: center;
@@ -576,8 +576,9 @@ section.alt .terms-item { background: var(--bg); }
 .founder-name { font-family: var(--serif); font-size: 1.28rem; font-weight: 600; color: var(--ink); line-height: 1.25; }
 .founder-role { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0.3rem 0 0.5rem; }
 .founder-cred { font-size: 0.79rem; line-height: 1.55; color: var(--muted); }
-.founder-focus { display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; font-size: 0.86rem; color: var(--ink); font-weight: 500; margin-bottom: 1rem; }
-.founder-focus .ff-label { font-size: 0.63rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+/*AT THE BOTTOM OF THE FOCUS"" THIS IS THE SPACING AT 1.2 REM!*/
+.founder-focus { display: block; font-size: 0.86rem; color: var(--ink); font-weight: 500; margin-bottom: 1.2rem; }
+.founder-focus .ff-label { display: block; font-size: 0.63rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 0.3rem; }
 .founder-bio { font-size: 0.88rem; line-height: 1.8; color: var(--muted); margin-bottom: 0.9rem; }
 .founder-bio strong { color: var(--ink); font-weight: 600; }
 .founder-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; padding-top: 1rem; margin-top: 0.3rem; border-top: 1px solid var(--border); }
