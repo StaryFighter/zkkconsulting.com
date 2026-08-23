@@ -137,7 +137,8 @@ nav.shrink .nav-mark { width: 80px; height: auto; }
 @media (max-width: 1180px) { .nav-links { gap: 1.15rem; } .nav-links a { font-size: 0.75rem; } }
 @media (max-width: 420px) {
   .nav-logo { font-size: 1.05rem; gap: 0.45rem; }
-  .nav-mark, nav.shrink .nav-mark { width: 90px; height: auto; }
+  .nav-mark, nav.shrink .nav-mark { width: 75px; height: auto; }
+  nav.shrink .nav-mark { width: 50px; height: auto; }
   .nav-back { font-size: 0.7rem; }
 }
 
