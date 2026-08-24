@@ -39,14 +39,13 @@
     .legal-intro { max-width: 900px; margin: 2rem auto 0; padding: 0 6vw; }
     .legal-intro p { color: var(--muted); font-size: .95rem; line-height: 1.85; }
     .legal-intro strong { color: var(--ink); font-weight: 600; }
-    .legal-toc { max-width: 900px; margin: 2rem auto 0; padding: 0 6vw; }
-    .legal-toc ol { columns: 2; column-gap: 2rem; list-style: none; counter-reset: toc; font-size: .86rem; }
+    .legal-toc { position: static !important; top: auto !important; max-width: 900px; margin: 2rem auto 0; padding: 0 6vw; padding-bottom: 20px; }    .legal-toc ol { columns: 2; column-gap: 2rem; list-style: none; counter-reset: toc; font-size: .86rem; }
     .legal-toc li { counter-increment: toc; margin-bottom: .4rem; break-inside: avoid; }
     .legal-toc li::before { content: counter(toc, decimal-leading-zero) " "; color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
     .legal-toc a { color: var(--navy); text-decoration: none; }
     .legal-toc a:hover { text-decoration: underline; }
     .legal-body { max-width: 900px; margin: 0 auto; padding: 2.6rem 6vw 4.5rem; }
-    .legal-item { border-top: 1px solid var(--border); padding: 2.1rem 0 0; margin-top: 2.1rem; scroll-margin-top: 92px; }
+    .legal-item { border-top: 0.5px solid var(--border); padding: 2.1rem 0 0; margin-top: 2.1rem; scroll-margin-top: 92px; }
     .legal-item:first-child { border-top: none; padding-top: 0; margin-top: 0; }
     .legal-item h2 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--ink); text-align: left; margin-bottom: .9rem; display: flex; gap: .7rem; align-items: baseline; }
     .legal-item h2 .num { font-size: .78rem; color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: .06em; }
@@ -357,7 +356,7 @@
       </section>
 
       <div class="legal-contact">
-        <div class="ct">Questions about anything here</div>
+        <div class="ct">Questions? Please reach out to us.</div>
         <p>
           ZKK Consulting LLC &middot; Texas, United States<br>
           <a href="mailto:info@zkkconsulting.com">info@zkkconsulting.com</a>
