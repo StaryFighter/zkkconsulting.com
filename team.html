@@ -82,7 +82,7 @@
     .proj-title { font-family: var(--serif); font-size: 1.12rem; font-weight: 600; color: var(--ink); margin-bottom: .5rem; }
     .proj-desc { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: .9rem; }
     .proj-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: auto; }
-    .proj-tag { font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; color: var(--navy); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 3px; padding: .15rem .5rem; }
+    .proj-tag { font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; color: var(--navy); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 3px; padding: .15rem .5rem;  margin-bottom: .2rem;  }
 
     .experience-list { display: flex; flex-direction: column; max-width: 900px; border-left: 1px solid var(--border); padding-left: 2.5rem; margin: 0 auto; text-align: left; position: relative; }
     .exp-item { position: relative; padding-bottom: 2.2rem; }
@@ -220,7 +220,7 @@
         <div class="section-label left">About</div>
         <h2>Engineering meets business strategy.</h2>
         <p>
-          Zolomon Kaliser is a co-founder of ZKK Consulting LLC. He holds a B.S. in Finance from UT Dallas
+          Zolomon Kaliser is the founder of ZKK Consulting LLC. He holds a B.S. in Finance from UT Dallas
           and is completing a Master of Engineering in Biomedical Engineering at Texas A&amp;M University
           (expected May 2027), an accelerated path that began when he started college at 14.
         </p>
@@ -421,6 +421,43 @@
     </div>
   </section>
 
+   <section id="contact" class="alt">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="section-label left">Get In Touch</div>
+        <p class="cta-headline" style="text-align:left;">Let's start a<br>conversation.</p>
+        <p style="color:var(--muted);font-size:.93rem;line-height:1.8;">
+          Every engagement is contracted with ZKK Consulting LLC. Depending on scope you may work with one
+          of us or both, and we tell you which on the discovery call.
+        </p>
+      </div>
+      <div class="fade-up">
+        <div class="contact-panel">
+          <a href="mailto:info@zkkconsulting.com" class="contact-link">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <span><span class="lbl">Reaches both of us</span>info@zkkconsulting.com</span>
+          </a>
+          <a href="mailto:zolomon@zkkconsulting.com" class="contact-link">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <span><span class="lbl">Zolomon</span>zolomon@zkkconsulting.com &middot; (469) 216-9278</span>
+          </a>
+          <a href="mailto:jad@zkkconsulting.com" class="contact-link">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <span><span class="lbl">Jad</span>jad@zkkconsulting.com &middot; (972) 469-0231</span>
+          </a>
+          <a href="intake.html" class="contact-link">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span><span class="lbl">Start a project</span>Book a consultation &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  
+  
+
   </div><!-- /panel-zolomon -->
 
   <!-- ══════════════════════════════════════════════════════════════════════
@@ -442,7 +479,7 @@
         <h2>Engineering meets market research.</h2>
         <p>
           Jad Haddad is a co-founder of ZKK Consulting LLC and holds a B.S. in Electronic Systems
-          Engineering Technology from Texas A&amp;M University, an applied engineering program built around
+          Engineering from Texas A&amp;M University, an applied engineering program built around
           electronics design, instrumentation, embedded systems, and product development.
         </p>
         <p>
@@ -479,7 +516,7 @@
       <div class="timeline-item fade-up">
         <div class="timeline-date">[CONFIRM] Graduation year</div>
         <div class="card">
-          <div class="timeline-degree">B.S. Electronic Systems Engineering Technology</div>
+          <div class="timeline-degree">B.S. Electronic Systems Engineering</div>
           <div class="timeline-school">Texas A&amp;M University &middot; College Station, TX</div>
           <p class="timeline-desc">
             Applied engineering program covering analog and digital electronics, embedded systems,
@@ -498,21 +535,46 @@
       Project work from jad-haddad.com. Descriptions below are placeholders.
       <span class="pf-todo-inline">[CONFIRM] replace each with Jad's own summary.</span>
     </p>
+
+    
     <div class="proj-grid">
+
+      <div class="card proj-card fade-up">
+        <div class="proj-title">Vyrex Solutions</div>
+        <div class="logo-small-slot.filled"><img src="assets/logos/vyrex.png" style="height: 40px;" alt="Vyrex" ></div>
+
+        <p class="proj-desc">Developed a wrist-worn fall-detection wearable using an LSM6DSV16XTR IMU, on-device machine learning,
+          and an nRF-series Bluetooth MCU. Designed PCB with FCC Part 15 considerations and advanced detection adaptation, achieved through
+          custom models trained on user gait. Led hardware design, PCB design & manufacturing, and BOM & supply-chain sourcing.
+        </p>
+        <div class="proj-tags"><span class="proj-tag">FOUNDER</span><span class="proj-tag">STM IMU</span><span class="proj-tag">nRF MCU</span><span class="proj-tag">PCB Design & Manufacturing</span>
+        <span class="proj-tag">FCC Part 15 Compliance</span><span class="proj-tag">AI training</span></div>
+        <div class="cert-issuer"><span class="ff-text">COLLEGE STATION, TX</span></br>FEB. 2026 - MAY 2026</div>
+      </div>
+
       <div class="card proj-card fade-up">
         <div class="proj-title">Smart Table Solutions</div>
-        <p class="proj-desc">[CONFIRM] One-paragraph description of the problem, the build, Jad's role, and the outcome.</p>
-        <div class="proj-tags"><span class="proj-tag">[CONFIRM] tech</span><span class="proj-tag">[CONFIRM] role</span></div>
+        <p class="proj-desc">Built STM32 BluePill-based smart standing desks, generating $2,400 in revenue. Developed motor control with optional add-ons. 
+          Designed modular PCB in KiCad.</p>
+        <div class="proj-tags"><span class="proj-tag">STM32</span><span class="proj-tag">SOLID EDGE</span><span class="proj-tag">MULTISIM</span></div>
+        <div class="cert-issuer"><span class="ff-text">McKINNEY, TX</span></br>MAY 2025 - JUL. 2025</div>
       </div>
+
       <div class="card proj-card fade-up">
         <div class="proj-title">SoilSense</div>
-        <p class="proj-desc">[CONFIRM] One-paragraph description of the problem, the build, Jad's role, and the outcome.</p>
-        <div class="proj-tags"><span class="proj-tag">[CONFIRM] tech</span><span class="proj-tag">[CONFIRM] role</span></div>
+        <p class="proj-desc">Arduino Uno R3 irrigation controller using capacitive soil-moisture sensor. Integrated DC pump with N-MOSFET, LED indicators, 
+          and ultrasonic reservoir sensing for low-water alerts</p>
+        <div class="proj-tags"><span class="proj-tag">C++</span><span class="proj-tag">Arduino</span><span class="proj-tag">Sensor-based systems</span></div>
+        <div class="cert-issuer"><span class="ff-text">MCKINNEY, TX</span></br>APR. 2025 - JUL. 2025</div>
       </div>
+
       <div class="card proj-card fade-up">
         <div class="proj-title">Wi-Fi Desk Buddy</div>
-        <p class="proj-desc">[CONFIRM] One-paragraph description of the problem, the build, Jad's role, and the outcome.</p>
-        <div class="proj-tags"><span class="proj-tag">[CONFIRM] tech</span><span class="proj-tag">[CONFIRM] role</span></div>
+        <p class="proj-desc">Wi-Fi-synced LED clock on Raspberry Pi Pico 2 W using NTP for automatic time correction. Features 12/24-hour formats, 
+          RGB color control, and Pomodoro focus timer with visual alerts</p>
+        <div class="proj-tags"><span class="proj-tag">Raspberry Pi Pico</span><span class="proj-tag">NTP</span><span class="proj-tag">PYTHON</span></div>
+        <div class="cert-issuer"><span class="ff-text">COLLEGE STATION, TX</span></br>DEC. 2024 - FEB. 2025</div>
+
       </div>
     </div>
   </section>
@@ -522,7 +584,7 @@
     <h2 class="fade-up">Work Experience</h2>
     <div class="timeline">
       <div class="timeline-item fade-up">
-        <div class="timeline-date">2026 &ndash; Present</div>
+        <div class="timeline-date">Aug. 2026 &ndash; Present</div>
         <div class="card">
           <div class="timeline-degree">Co-Founder</div>
           <div class="timeline-school">ZKK Consulting LLC &middot; Texas</div>
@@ -534,10 +596,10 @@
         </div>
       </div>
       <div class="timeline-item fade-up">
-        <div class="timeline-date">[CONFIRM] dates</div>
+        <div class="timeline-date">May 2026 &ndash; Aug. 2026</div>
         <div class="card">
-          <div class="timeline-degree">[CONFIRM] Role title</div>
-          <div class="timeline-school">[CONFIRM] Employer &middot; Location</div>
+          <div class="timeline-degree">Protection and Control Engineering Intern</div>
+          <div class="timeline-school">Oncor Electric Delivery &middot; Glen Rose, Texas</div>
           <p class="timeline-desc">[CONFIRM] Two or three sentences on scope and results. Duplicate this block for each additional role.</p>
         </div>
       </div>
@@ -551,22 +613,26 @@
       <div class="card cert-card">
         <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
         <div>
-          <div class="cert-name">Institute of Electrical and Electronics Engineers (IEEE)</div>
-          <div class="cert-issuer">Texas A&amp;M University &middot; [CONFIRM] role and years</div>
+          <div class="cert-name">Institute of Electrical and Electronics Engineers</div>
+          <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span></br> LOCAL CHAPTER MEMBER</br>DEC. 2025 - PRESENT</div>
         </div>
       </div>
+      
+      <div class="cert-grid fade-up">
       <div class="card cert-card">
         <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
         <div>
-          <div class="cert-name">Professional Association of Industrial Distribution (PAID)</div>
-          <div class="cert-issuer">Texas A&amp;M University &middot; [CONFIRM] role and years</div>
+          <div class="cert-name">Professional Association of Industrial Distribution</div>
+          <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span></br>MEMBER</br>DEC. 2025 - PRESENT</div>
         </div>
-      </div>
+        </div>
+
+      <div class="cert-grid fade-up">
       <div class="card cert-card">
         <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
         <div>
-          <div class="cert-name">Freshmen Exemplifying Aggie Spirit Together (FEAST)</div>
-          <div class="cert-issuer">Texas A&amp;M University &middot; [CONFIRM] role and years</div>
+          <div class="cert-name">Freshmen Exemplifying Aggie Spirit Together</div>
+          <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span></br> MENTOR, FORMER SPECIAL EVENTS PLANNING COMMITTEE MEMBER</br>AUG. 2023 - PRESENT</div>
         </div>
       </div>
     </div>
@@ -579,14 +645,25 @@
       <div class="card cert-card">
         <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
         <div>
-          <div class="cert-name">[CONFIRM] Certification name</div>
-          <div class="cert-issuer">[CONFIRM] Issuer. Delete this whole section if none apply.</div>
+          <div class="cert-name">Lean Six Sigma Yellow Belt</div>
+          <div class="cert-issuer"><span class="ff-text">Process Improvement & Quality Management</br></span>Issued by Wei Zhan, ASQ Certified Six Sigma Black Belt</div>
         </div>
       </div>
+
+      <div class="cert-grid fade-up">
+      <div class="card cert-card">
+        <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+        <div>
+          <div class="cert-name">Cloud Computing: Core Concepts</div>
+          <div class="cert-issuer"><span class="ff-text">Infrastructure, Services & Deployment Models</br></span>Issued by the National Association of State Boards of Accountancy (NASBA)</div>
+        </div>
+
     </div>
   </section>
 
-  </div><!-- /panel-jad -->
+<!--
+  </div>
+
 
   <section id="advisors" class="alt">
     <div class="section-label fade-up">Advisors &amp; Affiliations</div>
@@ -595,13 +672,19 @@
       Reserved for advisors, mentors, and institutional affiliations. Use wording such as
       &ldquo;As advised by&rdquo; only for people who have agreed in writing to be named.
     </p>
-    <!-- ADVISOR SLOTS — replace each with a real advisor, or delete this section.
+-->
+
+<!-- 
+        ADVISOR SLOTS — replace each with a real advisor, or delete this section.
          Recommended format per entry:
            <div class="card"><div class="cert-name">Name, credential</div>
            <div class="cert-issuer">Advisor · Area</div>
            <p class="tamu-card-desc">One sentence on what they advise on.</p></div>
-         Add matching logos to the homepage logo row (assets/logos/). -->
-    <div class="cert-grid fade-up">
+         Add matching logos to the homepage logo row (assets/logos/). 
+-->
+
+<!--  
+      <div class="cert-grid fade-up">
       <div class="card cert-card slot-card">
         <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
         <div>
@@ -618,8 +701,9 @@
       </div>
     </div>
   </section>
+-->
 
-  <section id="contact">
+  <section id="contact" class="alt">
     <div class="contact-grid">
       <div class="fade-up">
         <div class="section-label left">Get In Touch</div>

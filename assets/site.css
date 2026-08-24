@@ -53,6 +53,12 @@ img { max-width: 100%; }
 }
 .skip-link:focus { left: 0; }
 
+/* JAD ADDITIONS */
+
+.ff-text {
+  color: #b8870b;
+}
+
 footerJad {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
@@ -65,11 +71,39 @@ footerJad {
 }
 nav.shrink { padding: 0.6rem 5vw; box-shadow: 0 2px 12px rgba(28, 43, 58, 0.06); }
 
+.logo-small-slot {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 100px; height: 62px; padding: 0.5rem 1rem;
+  border: 1px dashed #cec8b8; border-radius: 6px;
+  background: var(--white);
+  font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); text-align: center; line-height: 1.35;
+}
+.logo-small-slot img { width: auto; display: block; }
+.logo-small-slot.filled {border-style: solid; border-color: var(--border); padding-left: 1rem; padding-top: 1rem;}
+
+
+/*
+.logo-row { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; align-items: center; }
+.logo-slot {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 148px; height: 62px; padding: 0.5rem 1rem;
+  border: 1px dashed #cec8b8; border-radius: 6px;
+  background: var(--white);
+  font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); text-align: center; line-height: 1.35;
+}
+.logo-slot img { max-height: 100px; width: auto; display: block; }
+.logo-slot.filled { border-style: solid; border-color: var(--border); }
+.logo-note { text-align: center; font-size: 0.76rem; color: var(--muted); margin-top: 0.9rem; }
+*/
+
 .footerJad-logo {
   display: inline-flex; align-items: center; gap: 0.55rem;
   font-family: var(--serif);
   font-size: 1.5rem; font-weight: 600;
   color: var(--ink); letter-spacing: 0.01em;
+  padding-right: 1rem;
   text-decoration: none; flex: none;
 }
 
@@ -654,12 +688,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 640px) {
   section { padding: 3.2rem 6vw; }
   .logo-slot {
-    min-width: 120px;
+    min-width: 130px;
     height: 50px;
-    padding: 0.4rem 0.7rem;
+    padding: 0.2rem 0.7rem;
   }
   .logo-slot img {
-    max-height: 36px !important;
+    max-height: 40px !important;
     height: auto !important;
     width: auto;
   }
