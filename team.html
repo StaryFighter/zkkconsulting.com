@@ -63,7 +63,9 @@
     .edu-stats-row { font-size: .85rem; color: var(--muted); }
     .timeline-desc { font-size: .9rem; color: var(--muted); line-height: 1.75; }
 
-    .tamu-grid, .projects-grid, .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .tamu-grid, .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+.projects-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+.projects-grid .project-card { flex: 1 1 calc(50% - 0.75rem); max-width: calc(50% - 0.75rem); }
     .tamu-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
     .tamu-card-img { height: 190px; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: var(--white); border-bottom: 1px solid var(--border); }
     .tamu-card-body { padding: 1.5rem 1.6rem; }
@@ -99,7 +101,7 @@
     .exp-bullets li { font-size: .89rem; color: var(--muted); display: flex; gap: .7rem; line-height: 1.6; }
     .exp-bullets li::before { content: '·'; color: var(--accent); flex-shrink: 0; font-weight: 700; }
 
-    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+    .cert-grid { display: flex; flex-direction: column; gap: 1rem; min-width: 600px; margin: 0 auto; }
     .cert-card { display: flex; gap: 1rem; align-items: flex-start; }
     .cert-icon { width: 30px; height: 30px; flex-shrink: 0; stroke: var(--accent); fill: none; stroke-width: 1.5; }
     .cert-name { font-family: var(--serif); color: var(--ink); font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; line-height: 1.3; }
@@ -140,7 +142,8 @@
     .pf-todo-inline { color: #6b5416; background: #fdf8ec; padding: .05rem .3rem; border-radius: 3px; font-size: .95em; }
 
     @media (max-width: 900px) {
-      .about-grid, .contact-grid, .cert-grid, .tamu-grid, .projects-grid, .proj-grid { grid-template-columns: 1fr; }
+      .about-grid, .contact-grid, .cert-grid, .tamu-grid, .proj-grid { grid-template-columns: 1fr; }
+      .projects-grid .project-card { flex-basis: 100%; max-width: 100%; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
@@ -453,7 +456,6 @@
       </div>
     </div>
   </section>
-  </main>
 
   
   
@@ -529,13 +531,8 @@
   </section>
 
   <section class="alt">
-    <div class="section-label fade-up">Texas A&amp;M University</div>
+    <div class="section-label fade-up">Experience</div>
     <h2 class="fade-up">Engineering Projects</h2>
-    <p class="section-intro fade-up">
-      Project work from jad-haddad.com. Descriptions below are placeholders.
-      <span class="pf-todo-inline">[CONFIRM] replace each with Jad's own summary.</span>
-    </p>
-
     
     <div class="proj-grid">
 
@@ -609,56 +606,52 @@
   <section class="alt">
     <div class="section-label fade-up">Leadership</div>
     <h2 class="fade-up">Involvement</h2>
-    <div class="cert-grid fade-up">
-      <div class="card cert-card">
-        <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
-        <div>
-          <div class="cert-name">Institute of Electrical and Electronics Engineers</div>
-          <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span></br> LOCAL CHAPTER MEMBER</br>DEC. 2025 - PRESENT</div>
-        </div>
-      </div>
-      
-      <div class="cert-grid fade-up">
-      <div class="card cert-card">
-        <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
-        <div>
-          <div class="cert-name">Professional Association of Industrial Distribution</div>
-          <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span></br>MEMBER</br>DEC. 2025 - PRESENT</div>
-        </div>
-        </div>
 
-      <div class="cert-grid fade-up">
-      <div class="card cert-card">
-        <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
-        <div>
-          <div class="cert-name">Freshmen Exemplifying Aggie Spirit Together</div>
-          <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span></br> MENTOR, FORMER SPECIAL EVENTS PLANNING COMMITTEE MEMBER</br>AUG. 2023 - PRESENT</div>
-        </div>
-      </div>
+    <div class="cert-grid fade-up">
+  <div class="card cert-card">
+    <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+    <div>
+      <div class="cert-name">Institute of Electrical and Electronics Engineers</div>
+      <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span><br>LOCAL CHAPTER MEMBER<br>DEC. 2025 - PRESENT</div>
     </div>
+  </div>
+  <div class="card cert-card">
+    <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+    <div>
+      <div class="cert-name">Professional Association of Industrial Distribution</div>
+      <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span><br>MEMBER<br>DEC. 2025 - PRESENT</div>
+    </div>
+  </div>
+  <div class="card cert-card">
+    <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+    <div>
+      <div class="cert-name">Freshmen Exemplifying Aggie Spirit Together</div>
+      <div class="cert-issuer"><span class="ff-text">Texas A&amp;M University</span><br>MENTOR, FORMER SPECIAL EVENTS PLANNING COMMITTEE MEMBER<br>AUG. 2023 - PRESENT</div>
+    </div>
+  </div>
+</div>
   </section>
 
   <section>
     <div class="section-label fade-up">Credentials</div>
     <h2 class="fade-up">Certifications</h2>
+
     <div class="cert-grid fade-up">
-      <div class="card cert-card">
-        <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
-        <div>
-          <div class="cert-name">Lean Six Sigma Yellow Belt</div>
-          <div class="cert-issuer"><span class="ff-text">Process Improvement & Quality Management</br></span>Issued by Wei Zhan, ASQ Certified Six Sigma Black Belt</div>
-        </div>
-      </div>
-
-      <div class="cert-grid fade-up">
-      <div class="card cert-card">
-        <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
-        <div>
-          <div class="cert-name">Cloud Computing: Core Concepts</div>
-          <div class="cert-issuer"><span class="ff-text">Infrastructure, Services & Deployment Models</br></span>Issued by the National Association of State Boards of Accountancy (NASBA)</div>
-        </div>
-
+  <div class="card cert-card">
+    <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+    <div>
+      <div class="cert-name">Lean Six Sigma Yellow Belt</div>
+      <div class="cert-issuer"><span class="ff-text">Process Improvement &amp; Quality Management</span><br>Issued by Wei Zhan, ASQ Certified Six Sigma Black Belt</div>
     </div>
+  </div>
+  <div class="card cert-card">
+    <svg class="cert-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+    <div>
+      <div class="cert-name">Cloud Computing: Core Concepts</div>
+      <div class="cert-issuer"><span class="ff-text">Infrastructure, Services &amp; Deployment Models</span><br>Issued by the National Association of State Boards of Accountancy (NASBA)</div>
+    </div>
+  </div>
+</div>
   </section>
 
 <!--
