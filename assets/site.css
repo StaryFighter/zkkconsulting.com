@@ -688,12 +688,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (max-width: 640px) {
   section { padding: 3.2rem 6vw; }
   .logo-slot {
-    min-width: 130px;
+    min-width: 100px;
     height: 50px;
     padding: 0.2rem 0.7rem;
   }
   .logo-slot img {
-    max-height: 40px !important;
+    max-height: 30px !important;
     height: auto !important;
     width: auto;
   }
