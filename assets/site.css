@@ -622,7 +622,7 @@ section.alt .terms-item { background: var(--bg); }
 .founder-hero > div { min-width: 0; }
 .founder-hero-role { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: .7rem; }
 .founder-hero-name { font-family: var(--serif); font-size: 3rem; font-weight: 600; line-height: .98; margin-bottom: 1.3rem; letter-spacing: -.01em; color: var(--ink); overflow-wrap: break-word; }
-.founder-hero-statement { font-size: .98rem; color: var(--muted); line-height: 1.75; max-width: 430px; }
+.founder-hero-statement { font-size: .98rem; color: var(--muted); line-height: 1.75; max-width: 700px; }
 .founder-hero-statement em { font-style: normal; color: var(--ink); border-bottom: 1px dashed var(--border); }
 .founder-hero h2 { margin: .6rem 0 0; }
 
@@ -633,7 +633,7 @@ section.alt .terms-item { background: var(--bg); }
   .founder-hero > div { min-width: 0; }
   .founder-hero > div:not(.founder-hero-photo-col) { margin-left: 0; }
 
-  .founder-hero-statement { margin: 0 auto; }
+  .founder-hero-statement { margin: 0 auto; max-width: 500px; }
   .founder-hero-photo-col { order: -1; }
 }
 
@@ -643,6 +643,7 @@ section.alt .terms-item { background: var(--bg); }
   .founder-hero > div { min-width: 0; }
   .founder-hero > div:not(.founder-hero-photo-col) { margin-left: 0; }
 
+  .founder-hero-statement { margin: 0 auto; max-width: 350px; }
   .founder-hero-photo, .founder-hero-photo-ph { max-width: 300px; }
 }
 
