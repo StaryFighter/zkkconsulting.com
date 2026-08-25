@@ -275,12 +275,20 @@ section.alt .card { background: var(--bg); }
 .card-static:hover { transform: none; box-shadow: none; border-color: var(--border); }
 
 /* ── PAGE HERO (inner pages) ─────────────────────────────────────── */
+
 .page-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 132px 5vw 56px;
   border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--gold) 250%);
   text-align: center;
+  box-sizing: border-box;
 }
+
+
 .page-hero-inner { max-width: 800px; margin: 0 auto; }
 .page-hero .lede { font-size: 1.04rem; color: var(--muted); line-height: 1.85; max-width: 640px; margin: 0 auto; }
 .page-hero .hero-ctas { margin-top: 2rem; }
