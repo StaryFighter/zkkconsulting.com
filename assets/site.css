@@ -267,11 +267,11 @@ h3 { font-family: var(--serif); font-weight: 600; color: var(--ink); line-height
 /* ── CARDS ───────────────────────────────────────────────────────── */
 .card {
   background: var(--white); border: 1px solid var(--border);
-  border-radius: 8px; padding: 1.9rem 2rem; text-align: left;
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  border-radius: 12px; padding: 1.9rem 2rem; text-align: left;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-section.alt .card { background: var(--bg); }
-.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: #d6d1c4; }
+section.alt .card { background: var(--white); }
+.card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04); border-color: var(--accent); }
 .card-static:hover { transform: none; box-shadow: none; border-color: var(--border); }
 
 /* ── PAGE HERO (inner pages) ─────────────────────────────────────── */
@@ -283,7 +283,7 @@ section.alt .card { background: var(--bg); }
   justify-content: center;
   padding: 132px 5vw 56px;
   border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, var(--bg) 0%, var(--gold) 250%);
+  background: linear-gradient(180deg, var(--bg) 0%, #a2a1a1 250%);
   text-align: center;
   box-sizing: border-box;
 }
