@@ -5,6 +5,7 @@
    ═══════════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
+    document.documentElement.classList.add('js');
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hasGSAP = typeof window.gsap !== 'undefined';
@@ -16,13 +17,14 @@
 
   /* ── SCROLL REVEAL ── */
   if (animate) {
-    document.body.classList.add('js-anim');
+        document.body.classList.add('js-anim');
+    gsap.set('.fade-up', { clearProps: 'opacity,transform' }); // release the CSS-based hide; GSAP now owns these props
     gsap.set('.fade-up', { opacity: 0, y: 30 });
     if (hasST) {
       ScrollTrigger.batch('.fade-up', {
         start: 'top 88%',
         onEnter: function (els) {
-          gsap.to(els, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.09, overwrite: true });
+          gsap.to(els, { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', stagger: 0.12, overwrite: true });
         }
       });
       ScrollTrigger.refresh();

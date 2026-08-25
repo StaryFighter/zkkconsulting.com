@@ -31,6 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/site.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.2rem; align-items: stretch; max-width: 1100px; margin: 0 auto; }
     .about-text h2 { text-align: left; margin-bottom: 1.4rem; }
@@ -145,7 +146,13 @@
       transition: background .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
     .pf-tab:hover { background: rgba(255,255,255,.6); }
-    .pf-tab.is-active { background: var(--white); border-color: var(--border); box-shadow: 0 2px 8px rgba(28,43,58,.07); }
+
+    .pf-tab { cursor: pointer; }
+    .pf-tab:hover { background: rgba(255,255,255,.85); transform: translateY(-1px); }
+    .pf-tab.is-active { background: var(--white); border-color: var(--navy); box-shadow: 0 3px 10px rgba(28,43,58,.1); }
+    .pf-tab.is-active .pf-tab-name::after { content: ' →'; color: var(--accent); }
+
+
     .pf-tab-name { font-family: var(--serif); font-size: 1.02rem; font-weight: 600; color: var(--muted); transition: color .18s ease; }
     .pf-tab.is-active .pf-tab-name { color: var(--ink); }
     .pf-tab-focus { font-size: .7rem; letter-spacing: .05em; color: var(--muted); }
@@ -212,6 +219,7 @@
 
   <main id="main">
   <section id="hero" class="page-hero">
+    <div id="heroCanvas" class="hero-canvas" aria-hidden="true"></div>
     <div class="page-hero-inner">
       <div class="eyebrow">ZKK Consulting LLC</div>
       <h1>The people doing the research.</h1>
@@ -220,7 +228,7 @@
         experience, and credentials.
       </p>
       <div class="pf-tabs" role="tablist" aria-label="Choose a co-founder">
-        <button class="pf-tab is-active" type="button" role="tab" id="tab-zolomon"
+        <button class="pf-tab" type="button" role="tab" id="tab-zolomon"
                 aria-selected="true" aria-controls="panel-zolomon" data-panel="zolomon">
           <span class="pf-tab-name">Zolomon Kaliser</span>
           <span class="pf-tab-focus">Market analysis, finance &amp; medtech</span>
@@ -234,7 +242,7 @@
     </div>
   </section>
 
-  <div class="pf-panel is-active" id="panel-zolomon" role="tabpanel" aria-labelledby="tab-zolomon">
+  <div class="pf-panel" id="panel-zolomon" role="tabpanel" aria-labelledby="tab-zolomon" hidden>
   <a id="zolomon" class="pf-anchor"></a>
 
 
@@ -908,33 +916,71 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="assets/site.js"></script>
+  <script src="assets/hero3d.js"></script>
+
   <script>
     (function () {
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('.pf-tab'));
-      if (!tabs.length) return;
-      function show(key, push) {
-        tabs.forEach(function (t) {
-          var on = t.getAttribute('data-panel') === key;
-          t.classList.toggle('is-active', on);
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        ['zolomon', 'jad'].forEach(function (k) {
-          var panel = document.getElementById('panel-' + k);
-          if (panel) panel.hidden = (k !== key);
-        });
-        if (push && history.pushState) history.pushState(null, '', '#' + key);
-        if (window.ScrollTrigger && ScrollTrigger.refresh) ScrollTrigger.refresh();
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.pf-tab'));
+  if (!tabs.length) return;
+
+  var reduceMotion = window.ZKK && window.ZKK.reduceMotion;
+  var hasGSAP = typeof window.gsap !== 'undefined';
+
+  function animatePanel(panel) {
+    if (!panel || !hasGSAP || reduceMotion) return;
+    var els = panel.querySelectorAll('.fade-up');
+    if (!els.length) return;
+    gsap.fromTo(els,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.08, overwrite: true }
+    );
+  }
+
+  function show(key, shouldScroll) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-panel') === key;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    var shownPanel = null;
+    ['zolomon', 'jad'].forEach(function (k) {
+      var panel = document.getElementById('panel-' + k);
+      if (!panel) return;
+      panel.hidden = (k !== key);
+      if (k === key) shownPanel = panel;
+    });
+
+        if (history.replaceState) history.replaceState(null, '', '#' + key);
+
+    // Recalculate trigger positions now that the panel is visible, in "safe"
+    // mode so it doesn't fight the smooth scroll below.
+    if (window.ScrollTrigger && ScrollTrigger.refresh) ScrollTrigger.refresh(true);
+
+    animatePanel(shownPanel);
+
+    if (shouldScroll) {
+      var anchor = document.getElementById(key);
+      if (anchor) {
+        var navH = 72;
+        var y = anchor.getBoundingClientRect().top + window.pageYOffset - navH + 1;
+        window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
       }
-      tabs.forEach(function (t) {
-        t.addEventListener('click', function () { show(t.getAttribute('data-panel'), true); });
-      });
-      function fromHash() {
-        var h = (window.location.hash || '').replace('#', '');
-        if (h === 'jad' || h === 'zolomon') show(h, false);
-      }
-      fromHash();
-      window.addEventListener('hashchange', fromHash);
-    })();
+    }
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      show(t.getAttribute('data-panel'), true);
+    });
+  });
+
+  var h = (window.location.hash || '').replace('#', '');
+  if (h === 'jad' || h === 'zolomon') {
+    show(h, true);
+  }
+  // No hash on arrival: both panels stay closed until a tab is clicked.
+})();
 
   </script>
 
