@@ -66,15 +66,30 @@
         }
       }
     }
+
+
     var lineGeo = new THREE.BufferGeometry();
     lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
     group.add(new THREE.LineSegments(lineGeo, lineMat));
 
+    var targetRotX = 0, targetRotY = 0;
+    window.addEventListener('mousemove', function (e) {
+      targetRotY = ((e.clientX / window.innerWidth) - 0.5) * 0.25;
+      targetRotX = ((e.clientY / window.innerHeight) - 0.5) * 0.15;
+    });
+
     var clock = new THREE.Clock();
+
+
     function tick() {
       var t = clock.getElapsedTime();
+
+
       group.rotation.y += 0.0009;
+      group.rotation.x += (targetRotX - group.rotation.x) * 0.02;
       nodes.forEach(function (n) {
+
+
         var s = n.userData.baseScale + Math.sin(t * 1.2 + n.userData.pulseOffset) * 0.18;
         n.scale.setScalar(s);
       });
