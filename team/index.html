@@ -393,7 +393,14 @@ section.alt .viz-tab-mini.is-active {
         <div class="tamu-card-body">
           
           <div class="tamu-card-title">Vyrex: Wrist-Worn Fall-Detection Wearable</div>
-          <p class="tamu-card-desc">Performed cost engineering and supply-chain research for an internal wearable program. Rebuilt the bill of materials using distributor and assembler sourcing, reducing estimated per-unit component cost from $18.73 to $5.39 at quantity one. Also modeled the impact of a sensor upgrade, maintained the design log, benchmarked enclosure dimensions against existing wrist wearables, and contributed to preliminary prior-art research. The program was internal research and was not commercialized.</p>
+          <p class="tamu-card-desc">Performed cost engineering and supply-chain research for an internal wearable
+             program. Rebuilt the bill of materials using distributor and assembler sourcing, reducing estimated 
+             per-unit component cost from $18.73 to $5.39 at quantity one. Also modeled the impact of a sensor 
+             upgrade, maintained the design log, 
+             benchmarked enclosure dimensions against existing wrist wearables, 
+             and contributed to preliminary prior-art research. The program was internal research and 
+             was ultimately not commercialized.
+            </p>
               <span class="badge badge-sampleGreen">Internal R&amp;D</span>
               <div class="cert-issuer"><span class="ff-text">COLLEGE STATION, TX</span></br>Feb. 2026 – May 2026</div>
         </div>
@@ -642,14 +649,21 @@ section.alt .viz-tab-mini.is-active {
         <div class="logo-small-slot.filled"><img src="/assets/logos/vyrex.png" style="height: 40px; margin-top: 5px; margin-bottom: 10px;" alt="Vyrex" ></div>
 
         <p class="proj-desc">Originated the concept for and led the technical design and R&amp;D on an internal
-          wrist-worn fall-detection wearable program. Directed the hardware architecture: a PCB design carried
-          through Version 3.0.0, a bench prototype built on an ESP32 development board with an Adafruit
-          LSM6DSOXTR six-axis IMU breakout, and a complete component specification covering BLE MCU, inertial
-          sensing, lithium-polymer charge management, USB-C power input, regulation, and MOSFET-driven haptic
-          feedback with flyback protection. Led the sensor migration from the STM LSM6DSOXTR to the
-          LSM6DSV16XTR and the ESP32 devkit to an nRF52805 BLE 5.4 module, weighing assembler stock availability, power consumption, pin-compatibility, and
-          researched prior art and competitive patents in the fall-detection wearable space to inform the
-          the program's IP strategy. Vyrex was an internal research program and was not commercialized.
+        wrist-worn fall-detection wearable program. Directed the hardware architecture: a PCB design carried through
+        Version 3.0.0, a bench prototype built on an ESP32 development board with an Adafruit LSM6DSOXTR six-axis
+        IMU breakout, and a complete component specification covering the BLE MCU, inertial sensing, lithium-polymer
+        charge management, USB-C power input, regulation, and MOSFET-driven haptic feedback with flyback protection.
+        Led the IMU migration from the STM LSM6DSOXTR to the LSM6DSV16XTR for lower power draw, stronger on-chip
+        machine-learning inference, and higher onboard storage, which reduced how often the device had to offload
+        data and interrupt the MCU's deep-sleep state. Also led the MCU migration from a prototyping ESP32 devkit to
+        an nRF52805 BLE 5.4 module before ultimately settling on an ESP32-C3 Mini, weighing assembler stock
+        availability, power consumption, and pin compatibility. That final choice also avoided FCC 47 CFR Part 15C
+        intentional-radiator testing, saving thousands of dollars. Also developed a companion app with a custom
+        machine-learning algorithm: the device offloaded stored user gait data to the app, which retrained the model
+        and adjusted the user's fall-detection parameters, then sent the updated parameters back to the device over
+        Bluetooth into a fully custom, power-efficient deep-sleep interrupt system. Researched prior art and
+        competitive patents in the fall-detection wearable space to inform the program's IP strategy. Vyrex was an
+        internal research program and was ultimately not commercialized.
         </p>
         <div class="proj-tags"><span class="proj-tag">ORIGINATOR</span><span class="proj-tag">HARDWARE LEAD</span><span class="proj-tag">PCB Design v3.0.0</span>
         <span class="proj-tag">Sensor Selection</span><span class="proj-tag">Prior-Art &amp; Patent Research</span></div>
@@ -664,7 +678,7 @@ section.alt .viz-tab-mini.is-active {
 
         <p class="proj-desc">Researched capacitor bank theory and fault-response behavior for high-voltage
         transmission systems tied to the Comanche Peak Nuclear Power Plant. Covered
-        series vs. parallel bank configurations, tap-sensing and unbalance protection, and relay-based fault
+        series vs. parallel bank configurations, tap-sensing & unbalance protection, and relay-based fault
         response. Built a set of interactive animations from scratch in HTML/SVG to explain the concepts, including
         a phase-correction fault-response diagram, a sensing-circuit walkthrough, a series/parallel configuration
         comparison, and a power-triangle explainer using a beer-pour analogy for real vs. reactive power. This later became 
