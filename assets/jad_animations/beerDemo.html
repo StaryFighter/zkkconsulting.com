@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Beer = Power Triangle</title>
+<style>
+  body {
+    margin: 0;
+    background: #4182c3;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1100 680" width="98vw" style="max-width:1100px" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#3ddc5a"/>
+  </marker>
+  <marker id="arr-#FDB924" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="#FDB924"/>
+  </marker>
+
+  <linearGradient id="cokeLiquidGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%"   stop-color="#140700"/>
+    <stop offset="20%"  stop-color="#2b1200"/>
+    <stop offset="50%"  stop-color="#261103"/>
+    <stop offset="80%"  stop-color="#2b1200"/>
+    <stop offset="100%" stop-color="#140700"/>
+</linearGradient>
+
+  <linearGradient id="foamGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"  stop-color="#fffef8"/>
+    <stop offset="55%" stop-color="#f0e8cc"/>
+    <stop offset="100%" stop-color="#d4c090" stop-opacity="0.5"/>
+  </linearGradient>
+
+  <clipPath id="glassClip">
+    <path d="M85,30 L335,30 L305,380 L295,590 L125,590 L115,380 Z"/>
+  </clipPath>
+</defs>
+
+  <!-- ===================== PINT GLASS ===================== -->
+  <g id="pint">
+
+    <!-- Glass outline — STATIC, never animated -->
+    <path d="M85,30 L335,30 L305,380 L295,590 L125,590 L115,380 Z"
+          fill="none" stroke="#c8d8f0" stroke-width="3"/>
+    <line x1="85" y1="30" x2="335" y2="30" stroke="#ddeeff" stroke-width="4" stroke-linecap="round"/>
+    <rect x="125" y="588" width="170" height="14" rx="2" fill="#c8d8f0"/>
+
+    <g clip-path="url(#glassClip)">
+
+      <!-- Beer body: top edge (divider with foam) moves, total liquid level (top of foam) stays fixed -->
+      <rect x="60" y="160" width="360" height="440" fill="url(#cokeLiquidGrad)">
+        <animate attributeName="y"
+          values="160;280;280;160;160"
+          keyTimes="0;0.35;0.5;0.85;1"
+          dur="7s" repeatCount="indefinite" calcMode="spline"
+          keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      </rect>
+
+      <!-- Bubbles -->
+      <circle cx="150" cy="590" r="3" fill="rgba(255,210,80,0.45)">
+        <animate attributeName="cy" values="590;30" dur="3.1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;0.6;0" dur="3.1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="210" cy="590" r="2" fill="rgba(255,210,80,0.35)">
+        <animate attributeName="cy" values="590;30" dur="2.4s" repeatCount="indefinite" begin="0.7s"/>
+        <animate attributeName="opacity" values="0;0.5;0" dur="2.4s" repeatCount="indefinite" begin="0.7s"/>
+      </circle>
+      <circle cx="280" cy="590" r="4" fill="rgba(255,210,80,0.3)">
+        <animate attributeName="cy" values="590;30" dur="3.8s" repeatCount="indefinite" begin="1.3s"/>
+        <animate attributeName="opacity" values="0;0.5;0" dur="3.8s" repeatCount="indefinite" begin="1.3s"/>
+      </circle>
+      <circle cx="180" cy="590" r="2" fill="rgba(255,200,60,0.3)">
+        <animate attributeName="cy" values="590;30" dur="2.9s" repeatCount="indefinite" begin="2s"/>
+        <animate attributeName="opacity" values="0;0.4;0" dur="2.9s" repeatCount="indefinite" begin="2s"/>
+      </circle>
+
+      <!-- Foam layer: top fixed at total liquid level, only its height (and therefore the divider) grows/shrinks -->
+      <rect x="60" y="100" width="360" height="60" fill="url(#foamGrad)">
+        <animate attributeName="height"
+          values="60;180;180;60;60"
+          keyTimes="0;0.35;0.5;0.85;1"
+          dur="7s" repeatCount="indefinite" calcMode="spline"
+          keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      </rect>
+
+      <!-- Foam surface bumps — fixed at the (now constant) top of the liquid -->
+      <g fill="rgba(255,252,240,0.95)">
+        <ellipse cx="110" cy="100" rx="28" ry="10"/>
+        <ellipse cx="150" cy="92" rx="28" ry="10"/>
+        <ellipse cx="190" cy="94" rx="34" ry="11"/>
+        <ellipse cx="250" cy="97" rx="32" ry="10"/>
+        <ellipse cx="305" cy="100" rx="26" ry="9"/>
+      </g>
+
+    </g><!-- end clip -->
+
+    <path d="M100,35 L118,370" stroke="rgba(255,255,255,0.12)" stroke-width="12" stroke-linecap="round" clip-path="url(#glassClip)"/>
+
+    <!-- Top tick of bracket — fixed at constant total liquid level -->
+    <line x1="60" y1="100" x2="42" y2="100" stroke="white" stroke-width="2"/>
+    <!-- Vertical bar of bracket -->
+    <line x1="42" y1="100" x2="42" y2="590" stroke="white" stroke-width="2"/>
+    <!-- Bottom tick of bracket — fixed at glass base -->
+    <line x1="60" y1="590" x2="42" y2="590" stroke="white" stroke-width="2"/>
+    <!-- MVA label -->
+    <g transform="translate(28,345)">
+      <text font-size="30" fill="#860038" font-weight="bold" text-anchor="middle"
+            transform="rotate(-90,0,0)">Whole Drink = Mega Volt-Amperes</text>
+    </g>
+
+    <!-- Foam label -->
+    <text x="365" y="78" font-size="30" fill="#3ddc5a" font-weight="bold">Foam = Mega Volt-Amperes Reactive</text>
+    <text x="365" y="103" font-size="20" fill="#cfd8ef">(Reactive Power – not usable)</text>
+    <line x1="360" y1="70" x2="340" y2="113" stroke="#aee67f" stroke-width="1.5" marker-end="url(#arr)"/>
+
+    <!-- Beer label -->
+    <text x="365" y="430" font-size="30" fill="#FDB924" font-weight="bold">Soda = Mega Watts</text>
+    <text x="365" y="455" font-size="20" fill="#cfd8ef">(Real Power – usable)</text>
+    <line x1="355" y1="420" x2="338" y2="400" stroke="#FDB924" stroke-width="1.5" marker-end="url(#arr-#FDB924)"/>
+<!--
+  </g>
+
+
+
+    <!-- True Power (horizontal, pink) -->
+    <line x1="620" y1="590" x2="1060" y2="590" stroke="#FDB924" stroke-width="5" stroke-linecap="round">
+      <animate attributeName="x2"
+        values="1060;900;900;1060;1060"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+    </line>
+    <text text-anchor="middle" y="615" font-size="20" fill="#FDB924" font-weight="bold">
+      <animateTransform attributeName="transform" type="translate"
+        values="840,0;760,0;760,0;840,0;840,0"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      Real Power (MW)
+    </text>
+
+    <!-- Reactive Power (vertical, green) -->
+    <line y1="590" stroke="#3ddc5a" stroke-width="5" stroke-linecap="round">
+      <animate attributeName="x1" values="1060;900;900;1060;1060"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      <animate attributeName="x2" values="1060;900;900;1060;1060"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      <animate attributeName="y2" values="490;230;230;490;490"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+    </line>
+
+    <!--
+      Reactive Power label shifted 28px further right.
+      State A: line x=1060, midpoint y=540 → pivot (1102, 540)
+      State B: line x=900,  midpoint y=410 → pivot (942, 410)
+    -->
+    <text font-size="20" fill="#3ddc5a" font-weight="bold" text-anchor="middle" dominant-baseline="auto">
+      <animateTransform attributeName="transform" type="rotate"
+        values="-90,1102,540;-90,942,410;-90,942,410;-90,1102,540;-90,1102,540"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"
+        additive="replace"/>
+      <animateTransform attributeName="transform" type="translate"
+        values="1102,525;942,410;942,410;1102,525;1102,525"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"
+        additive="sum"/>
+      Reactive Power (MVAR)
+    </text>
+    
+    Apparent Power (hypotenuse, orange)
+    <line x1="620" y1="590" stroke="#860038" stroke-width="5" stroke-linecap="round">
+      <animate attributeName="x2" values="1060;900;900;1060;1060"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      <animate attributeName="y2" values="490;230;230;490;490"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+    </line>
+
+    <!-- Apparent Power label on hypotenuse -->
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        values="840,540;760,410;760,410;840,540;840,540"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      <text font-size="20" fill="#860038" font-weight="bold" text-anchor="middle" dominant-baseline="auto" y="-8">
+        <animateTransform attributeName="transform" type="rotate"
+          values="-12.8,0,0;-52.1,0,0;-52.1,0,0;-12.8,0,0;-12.8,0,0"
+          keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+          keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+        Apparent Power (MVA)
+      </text>
+    </g>
+
+    <!-- θ arc -->
+    <path fill="none" stroke="white" stroke-width="2">
+      <animate attributeName="d"
+        values="M 680,590 A60,60 0 0,0 679,577;
+                M 657,590 A60,60 0 0,0 657,543;
+                M 657,590 A60,60 0 0,0 657,543;
+                M 680,590 A60,60 0 0,0 679,577;
+                M 680,590 A60,60 0 0,0 679,577"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+    </path>
+    <text font-size="20" fill="white">
+      <animateTransform attributeName="transform" type="translate"
+        values="700,585;680,560;680,560;700,585;700,585"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      θ
+    </text>
+
+    <!-- Right-angle marker -->
+    <rect width="14" height="14" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="4">
+      <animate attributeName="x" values="1046;886;886;1046;1046"
+        keyTimes="0;0.35;0.5;0.85;1" dur="7s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.4 0 0.6 1;0 0 1 1;0.4 0 0.6 1;0 0 1 1"/>
+      <animate attributeName="y" values="576;576;576;576;576" dur="7s" repeatCount="indefinite"/>
+    </rect>
+    
+
+  </g>
+
+  <!-- Footer -->
+  <text x="530" y="660" text-anchor="middle" font-size="22" fill="#FFFFFF">
+    Made by Jad Haddad
+  </text>
+
+</svg>
+</body>
+</html>

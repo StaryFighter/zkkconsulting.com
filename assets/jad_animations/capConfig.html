@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Series &amp; Parallel Cap Banks</title>
+<style>
+  body {
+    margin: 0;
+    background: #4182c3;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1060 760" width="98vw" style="max-width:1060px" xmlns="http://www.w3.org/2000/svg">
+
+  <text x="530" y="58" text-anchor="middle" font-size="26" font-weight="bold" fill="#FFFFFF">
+    Series v. Parallel Capacitor Configurations
+  </text>
+
+  <!-- ============ LEFT: PARALLEL — MVAR injection ============ -->
+  <g transform="translate(50,70)">
+    <text x="220" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#FDB924">Parallel – Allows for Increased MVAR Injection</text>
+
+    <line x1="20" y1="50" x2="20" y2="260" stroke="#444" stroke-width="4"/>
+    <line x1="420" y1="50" x2="420" y2="260" stroke="#444" stroke-width="4"/>
+
+    <!-- 3 branches, each its own color -->
+    <g>
+      <line x1="20" y1="90" x2="160" y2="90" stroke="#c70000" stroke-width="3"/>
+      <rect x="160" y="78" width="22" height="24" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+      <line x1="182" y1="90" x2="420" y2="90" stroke="#c70000" stroke-width="3"/>
+      <text x="200" y="83" font-size="14" fill="#c70000" font-weight="bold">C1</text>
+
+      <line x1="20" y1="155" x2="160" y2="155" stroke="#FDB924" stroke-width="3"/>
+      <rect x="160" y="143" width="22" height="24" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+      <line x1="182" y1="155" x2="420" y2="155" stroke="#FDB924" stroke-width="3"/>
+      <text x="200" y="148" font-size="14" fill="#FDB924" font-weight="bold">C2</text>
+
+      <line x1="20" y1="220" x2="160" y2="220" stroke="#7be37b" stroke-width="3"/>
+      <rect x="160" y="208" width="22" height="24" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+      <line x1="182" y1="220" x2="420" y2="220" stroke="#7be37b" stroke-width="3"/>
+      <text x="200" y="213" font-size="14" fill="#7be37b" font-weight="bold">C3</text>
+    </g>
+
+    <!-- arrow out to grid, pulsing MVAR dots merging from 3 branches into one feed -->
+    <line x1="420" y1="155" x2="490" y2="155" stroke="#444" stroke-width="4"/>
+    <line x1="-50" y1="155" x2="20" y2="155" stroke="#444" stroke-width="4"/>
+    <!--<circle r="5" fill="#FFFFFF"><animateMotion dur="1.2s" begin="0s" repeatCount="indefinite" path="M20,50 L20,260 L20,50"/></circle>-->
+    <circle r="5" fill="#cfd8ef"><animateMotion dur="3.5s" begin="0s" repeatCount="indefinite" path="M-50,155 L20,155 L20,90 L420,90 L420,155 L490,155 L420,155 L420,90 L20,90 L20,155 L-50,155"/></circle>
+    <circle r="5" fill="#cfd8ef"><animateMotion dur="3.5" begin="0s" repeatCount="indefinite" path="M-50,155 L20,155 L20,155 L420,155 L490,155 L420,155 L20,155 L-50,155"/></circle>
+    <circle r="5" fill="#cfd8ef"><animateMotion dur="3.5s" begin="0s" repeatCount="indefinite" path="M-50,155 L20,155 L20,220 L420,220 L420,155 L490,155 L420,155 L420,220 L20,220 L20,155 L-50,155"/></circle>
+    <!--<circle r="5" fill="#FFFFFF"><animateMotion dur="2s" begin="0s" repeatCount="indefinite" path="M-50,155 L20,155 L20,220 L420,220 L420,155 L490,155"/></circle>-->
+
+
+    <!-- grid symbol receiving combined MVAR -->
+    <g transform="translate(500,130)">
+      <path d="M0,25 L20,0 L40,25 L30,25 L30,50 L10,50 L10,25 Z" fill="#cfd8ef"/>
+      <text x="20" y="68" text-anchor="middle" font-size="13" fill="#FFFFFF" font-weight="bold">Grid</text>
+    </g>
+
+    <text x="220" y="280" text-anchor="middle" font-size="16" fill="#FFFFFF">All capacitors see full bus volts</text>
+    <text x="220" y="306" text-anchor="middle" font-size="19" font-weight="bold" fill="#7be37b">∆Q = Q1 + Q2 + Q3</text>
+    <text x="220" y="325" text-anchor="middle" font-size="14" fill="#7be37b">∆C = C1 + C2 + C3</text>
+  </g>
+
+  <!-- ============ RIGHT: SERIES — voltage division ============ -->
+  <g transform="translate(580,70)">
+    <text x="220" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#FDB924">Series – Divides voltage for reduced stress</text>
+
+    <line x1="20" y1="155" x2="420" y2="155" stroke="#444" stroke-width="4"/>
+
+    <rect x="120" y="143" width="22" height="24" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+    <text x="100" y="138" text-anchor="middle" font-size="13" fill="#c70000" font-weight="bold">C1</text>    
+
+    <rect x="220" y="143" width="22" height="24" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+    <text x="200" y="138" text-anchor="middle" font-size="13" fill="#FDB924" font-weight="bold">C2</text>
+
+    <rect x="320" y="143" width="22" height="24" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+    <text x="300" y="138" text-anchor="middle" font-size="13" fill="#7be37b" font-weight="bold">C3</text>
+
+
+    <text x="15" y="130" text-anchor="middle" font-size="14" fill="#FFFFFF">High V</text>
+    <!--<text x="430" y="148" text-anchor="middle" font-size="14" fill="#FFFFFF">0</text>-->
+
+    <!-- single chain of charge, one color path, same current everywhere -->
+    <circle r="5" fill="#cfd8ef"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M20,155 L320,155 L20,155"/></circle>
+    <circle r="5" fill="#cfd8ef"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M70,155 L370,155 L70,155"/></circle>
+    <circle r="5" fill="#cfd8ef"><animateMotion dur="2.2s" begin="0s" repeatCount="indefinite" path="M120,155 L420,155 L120,155"/></circle>
+    
+    <!-- voltage-division readout, each segment colored to match its cap, fades up -->
+    <g>
+      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.3;0.8;1" dur="4s" repeatCount="indefinite"/>
+      <line x1="20" y1="190" x2="142" y2="190" stroke="#c70000" stroke-width="3"/>
+      <!----> <line x1="142" y1="190" x2="242" y2="190" stroke="#FDB924" stroke-width="3"/>
+      <!----> <line x1="242" y1="190" x2="342" y2="190" stroke="#7be37b" stroke-width="3"/>
+      <!----> <line x1="342" y1="190" x2="420" y2="190" stroke="#666" stroke-width="3"/>
+      <text x="90"  y="208" text-anchor="middle" font-size="13" fill="#c70000" font-weight="bold">V1</text>
+      <text x="190" y="208" text-anchor="middle" font-size="13" fill="#FDB924" font-weight="bold">V2</text>
+      <text x="290" y="208" text-anchor="middle" font-size="13" fill="#7be37b" font-weight="bold">V3</text>
+    </g>
+
+    <text x="220" y="280" text-anchor="middle" font-size="16" fill="#FFFFFF">Same current, V splits across each can</text>
+    <text x="220" y="306" text-anchor="middle" font-size="19" font-weight="bold" fill="#7be37b">∆V = V1 + V2 + V3</text>
+    <text x="220" y="325" text-anchor="middle" font-size="14" font-weight="bold" fill="#7be37b">1/∆C = (1/C1 + 1/C2 + 1/C3)</text>
+  </g>
+
+  <!-- ============ BOTTOM: REAL APPLICATION — combined series-parallel rack on the grid ============ -->
+  <g transform="translate(60,440)">
+    <text x="470" y="10" text-anchor="middle" font-size="20" font-weight="bold" fill="#FDB924">
+      Real Phase Branch Example – Series & Parallel Strings
+    </text>
+
+    <!-- bus bars -->
+    <line x1="40" y1="25" x2="40" y2="250" stroke="#444" stroke-width="4"/>
+    <line x1="900" y1="25" x2="900" y2="250" stroke="#444" stroke-width="4"/>
+    <text x="40" y="25" text-anchor="middle" font-size="13" fill="#FFFFFF"></text>
+    <text x="900" y="25" text-anchor="middle" font-size="13" fill="#FFFFFF"></text>
+
+
+    <g transform="translate(0,140)">
+        <line x1="-50" y1="0" x2="990" y2="0" stroke="#444" stroke-width="3"/>
+    </g>
+
+    <!-- 3 parallel strings, each a series chain of 3 cans -->
+    <g id="rack">
+      <!-- string 1 -->
+      <g transform="translate(0,40)">
+        <line x1="40" y1="0" x2="900" y2="0" stroke="#c70000" stroke-width="3"/>
+        <rect x="100" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+        
+        <rect x="240" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+        
+        <rect x="380" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+        
+        <rect x="520" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+        
+        <rect x="660" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+        
+        <rect x="800" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#c70000" stroke-width="2" rx="4"/>
+        
+        <circle r="4" fill="#cfd8ef"><animateMotion dur="3.5s" begin="0s" repeatCount="indefinite" path="M-53,100 40,100 40,0 900,0 900,100 993,100 900,100 900,0 40,0 40,100 -53,100"/></circle>
+      </g>
+      <!-- string 2 -->
+      <g transform="translate(0,140)">
+        <line x1="40" y1="0" x2="900" y2="0" stroke="#FDB924" stroke-width="3"/>
+        <rect x="100" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+        
+        <rect x="240" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+        
+        <rect x="380" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+        
+        <rect x="520" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+        
+        <rect x="660" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+        
+        <rect x="800" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#FDB924" stroke-width="2" rx="4"/>
+        
+        <circle r="4" fill="#cfd8ef"><animateMotion dur="3.5s" begin="0s" repeatCount="indefinite" path="M-53,0 L993,0 L-53,0"/></circle>
+
+      </g>
+      <!-- string 3 -->
+      <g transform="translate(0,240)">
+        <line x1="40" y1="0" x2="900" y2="0" stroke="#7be37b" stroke-width="3"/>
+        <rect x="100" y="-12" width="24" height="24" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+        
+        <rect x="240" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+        
+        <rect x="380" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+        
+        <rect x="520" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+        
+        <rect x="660" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+
+        <rect x="800" y="-12" width="24" height="20" fill="#9fb3c8" stroke="#7be37b" stroke-width="2" rx="4"/>
+        
+        
+
+        <circle r="4" fill="#cfd8ef"><animateMotion dur="3.5s" begin="0s" repeatCount="indefinite" path="M-53,-100 40,-100 40,0 900,0 900,-100 993,-100 900,-100 900,0 40,0 40,-100 -53,-100"/></circle>
+      </g>
+    </g>
+
+    <text x="470" y="200" text-anchor="middle" font-size="15" fill="#FFFFFF">
+      6 cans in series per string (sharing voltage), 3 strings in parallel (sums MVAR)
+    </text>
+  </g>
+
+  <text x="530" y="725" text-anchor="middle" font-size="20" fill="#FFFFFF">
+    Made by Jad Haddad
+  </text>
+</svg>
+</body>
+</html>

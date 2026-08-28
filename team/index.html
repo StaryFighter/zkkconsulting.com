@@ -102,6 +102,27 @@
     .proj-tags { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: auto; padding-top: 10px; margin-bottom: 15px; }
     .proj-tagOld { font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; color: var(--navy); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 3px; padding: .15rem .5rem;  margin-bottom: .2rem;  }
     .proj-tag { font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; font-weight: 600; color: #ffffff; background: var(--accent); border: 1px solid var(--border); border-radius: 3px; padding: .15rem .5rem;  margin-bottom: 5px;  font-weight: 900;}
+    
+
+    /*THE VISUAL CODE EMBEDDER*/
+    .viz-embed { margin-top: 1rem; }
+    .viz-tabs-mini { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .6rem; }
+    .viz-tab-mini {
+      font-size: .68rem; letter-spacing: .03em; text-transform: uppercase; font-weight: 600;
+      color: var(--muted); background: var(--white); border: 1px solid var(--border);
+      border-radius: 4px; padding: .3rem .55rem; cursor: pointer; transition: all .18s;
+    }
+    section.alt .viz-tab-mini { background: var(--bg); }
+    .viz-tab-mini:hover { border-color: var(--navy); color: var(--ink); }
+    .viz-tab-mini.is-active,
+section.alt .viz-tab-mini.is-active {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+}
+    .viz-frame-mini {
+      width: 100%; aspect-ratio: 16/10; border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--border); background: #4182c3;
+    }
+.viz-frame-mini iframe { width: 100%; height: 100%; border: none; }
 
     .experience-list { display: flex; flex-direction: column; max-width: 900px; border-left: 1px solid var(--border); padding-left: 2.5rem; margin: 0 auto; text-align: left; position: relative; }
     .exp-item { position: relative; padding-bottom: 2.2rem; }
@@ -618,16 +639,51 @@
 
       <div class="card proj-card fade-up">
         <div class="proj-title">Vyrex Wrist Wearable</div>
-        <div class="logo-small-slot.filled"><img src="/assets/logos/vyrex.png" style="height: 40px;" alt="Vyrex" ></div>
+        <div class="logo-small-slot.filled"><img src="/assets/logos/vyrex.png" style="height: 40px; margin-top: 5px; margin-bottom: 10px;" alt="Vyrex" ></div>
 
-        <p class="proj-desc">Originated and led technical design and R&amp;D for an internal wrist-worn
-          fall-detection wearable. Developed the PCB through Version 3.0.0, built a bench prototype, led a
-          sourcing migration across two supply chains, and completed prior-art research. The program remained
-          internal and was not commercialized.
+        <p class="proj-desc">Originated the concept for and led the technical design and R&amp;D on an internal
+          wrist-worn fall-detection wearable program. Directed the hardware architecture: a PCB design carried
+          through Version 3.0.0, a bench prototype built on an ESP32 development board with an Adafruit
+          LSM6DSOXTR six-axis IMU breakout, and a complete component specification covering BLE MCU, inertial
+          sensing, lithium-polymer charge management, USB-C power input, regulation, and MOSFET-driven haptic
+          feedback with flyback protection. Led the sensor migration from the STM LSM6DSOXTR to the
+          LSM6DSV16XTR and the ESP32 devkit to an nRF52805 BLE 5.4 module, weighing assembler stock availability, power consumption, pin-compatibility, and
+          researched prior art and competitive patents in the fall-detection wearable space to inform the
+          the program's IP strategy. Vyrex was an internal research program and was not commercialized.
         </p>
         <div class="proj-tags"><span class="proj-tag">ORIGINATOR</span><span class="proj-tag">HARDWARE LEAD</span><span class="proj-tag">PCB Design v3.0.0</span>
         <span class="proj-tag">Sensor Selection</span><span class="proj-tag">Prior-Art &amp; Patent Research</span></div>
         <div class="cert-issuer"><span class="ff-text">COLLEGE STATION, TX</span></br>FEB. 2026 - MAY 2026</div>
+      </div>
+
+
+
+      <div class="card proj-card fade-up">
+        <div class="proj-title">Capacitor Banks: The Fundamentals of Theory and Application</div>
+        <div class="logo-small-slot.filled"><img src="/assets/logos/OncorLogo.png" style="height: 80px;" alt="Oncor" ></div>
+
+        <p class="proj-desc">Researched capacitor bank theory and fault-response behavior for high-voltage
+        transmission systems tied to the Comanche Peak Nuclear Power Plant. Covered
+        series vs. parallel bank configurations, tap-sensing and unbalance protection, and relay-based fault
+        response. Built a set of interactive animations from scratch in HTML/SVG to explain the concepts, including
+        a phase-correction fault-response diagram, a sensing-circuit walkthrough, a series/parallel configuration
+        comparison, and a power-triangle explainer using a beer-pour analogy for real vs. reactive power. This later became 
+        part of the team's new standard for explaining capacitor-bank behavior, enhancing on prior
+        approaches to onboarding and training on the subject.
+        </p>
+        <div class="viz-embed">
+          <div class="viz-tabs-mini">
+            <button class="viz-tab-mini is-active" data-viz-src="/assets/jad_animations/capBank.html" type="button">Phase Correction</button>
+            <button class="viz-tab-mini" data-viz-src="/assets/jad_animations/capWNew.html" type="button">Relaying</button>
+            <button class="viz-tab-mini" data-viz-src="/assets/jad_animations/capConfig.html" type="button">Series &amp; Parallel Configurations</button>
+            <button class="viz-tab-mini" data-viz-src="/assets/jad_animations/beerDemo.html" type="button">Power Triangle with Soda Analogy</button>
+          </div>
+          <div class="viz-frame-mini">
+            <iframe src="/assets/jad_animations/capBank.html" title="Capacitor bank visualization" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <div class="cert-issuer" style="margin-top: 20px"><span class="ff-text">Glen Rose, TX</span></br>MAY 2026 - AUG. 2026</div>
       </div>
 
       <div class="card proj-card fade-up">
@@ -954,6 +1010,20 @@
     show(h, true);
   }
   // No hash on arrival: both panels stay closed until a tab is clicked.
+})();
+
+(function () {
+  document.querySelectorAll('.viz-tabs-mini').forEach(function (group) {
+    var frame = group.nextElementSibling ? group.nextElementSibling.querySelector('iframe') : null;
+    if (!frame) return;
+    group.querySelectorAll('.viz-tab-mini').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        group.querySelectorAll('.viz-tab-mini').forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        frame.src = btn.dataset.vizSrc;
+      });
+    });
+  });
 })();
 
   </script>

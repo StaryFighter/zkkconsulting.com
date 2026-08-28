@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cap Bank — Phase Correction</title>
+<style>
+  body {
+    margin: 0;
+    background: #4182c3;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #3a1010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1060 680" width="98vw" style="max-width:1060px" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- shared timeline reference (all animations below use the same keyTimes so everything stays in lockstep and loops seamlessly):
+       0 --- 0.05 ------------- 0.45 --- 0.55 - 0.65 ------------- 1
+       off    fading IN (slow, 3.2s)      on    fading OUT (fast, 0.8s)   back to off (= state at 0, no jump) -->
+
+  <!-- ===================== VOLTAGE / CURRENT GRAPH ===================== -->
+  <g id="graph" transform="translate(60,40)">
+    <text x="0" y="-10" font-size="26" font-weight="bold" fill="#FFFFFF">Voltage &amp; Current at the Grid</text>
+
+    <!-- Axes -->
+    <line x1="0" y1="120" x2="940" y2="120" stroke="#3a1010" stroke-width="2"/>
+    <line x1="0" y1="20" x2="0" y2="220" stroke="#3a1010" stroke-width="2"/>
+    <text x="945" y="125" font-size="16" fill="#3a1010"></text>
+
+    <!-- Voltage wave (fixed reference, always in same place) -->
+    <path id="vWave" d="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120
+             C 280,20 320,20 360,120 C 400,220 440,220 480,120
+             C 520,20 560,20 600,120 C 640,220 680,220 720,120
+             C 760,20 800,20 840,120 C 880,220 920,220 940,170"
+          fill="none" stroke="#c70000" stroke-width="4" stroke-linecap="round"/>
+    <text x="5" y="185" font-size="18" fill="#c70000" font-weight="bold">Voltage</text>
+
+    <!-- moving power-flow arrows riding along the voltage wave: 4 evenly-spaced, constant speed, no jump at the loop -->
+    <g stroke="#c70000" fill="#c70000">
+      <path d="M-6,-5 L6,0 L-6,5 Z">
+        <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+      </path>
+      <path d="M-6,-5 L6,0 L-6,5 Z">
+        <animateMotion dur="4s" repeatCount="indefinite" begin="1s" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+      </path>
+      <path d="M-6,-5 L6,0 L-6,5 Z">
+        <animateMotion dur="4s" repeatCount="indefinite" begin="2s" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+      </path>
+      <path d="M-6,-5 L6,0 L-6,5 Z">
+        <animateMotion dur="4s" repeatCount="indefinite" begin="3s" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+      </path>
+    </g>
+
+    <!-- Current wave: same shape, shrunk to half amplitude around the centerline, then shifted right (lag) by an animated amount -->
+    <g id="currentGroup">
+      <animateTransform attributeName="transform" type="translate"
+        values="55,0;55,0;0,0;0,0;55,0;55,0"
+        keyTimes="0;0.05;0.45;0.55;0.65;1" dur="8s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+
+      <!-- static shrink: half amplitude, anchored on the y=120 centerline -->
+      <g transform="translate(0,120) scale(1,0.55) translate(0,-120)">
+        <path id="iWave" d="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120
+                 C 280,20 320,20 360,120 C 400,220 440,220 480,120
+                 C 520,20 560,20 600,120 C 640,220 680,220 720,120
+                 C 760,20 800,20 840,120 C 880,220 920,220 940,170"
+              fill="none" stroke="#FDB924" stroke-width="4" stroke-linecap="round" stroke-dasharray="14,8">
+          <!-- the dashes themselves crawl along the path, not just the arrows riding on top -->
+          <animate attributeName="stroke-dashoffset" values="0;-44" dur="1.6s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- moving power-flow arrows riding along the current wave (same group, so they shift and shrink with it) -->
+        <g stroke="#FDB924" fill="#FDB924">
+          <path d="M-6,-5 L6,0 L-6,5 Z">
+            <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+          </path>
+          <path d="M-6,-5 L6,0 L-6,5 Z">
+            <animateMotion dur="4s" repeatCount="indefinite" begin="1s" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+          </path>
+          <path d="M-6,-5 L6,0 L-6,5 Z">
+            <animateMotion dur="4s" repeatCount="indefinite" begin="2s" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+          </path>
+          <path d="M-6,-5 L6,0 L-6,5 Z">
+            <animateMotion dur="4s" repeatCount="indefinite" begin="3s" rotate="auto" path="M0,120 C 40,20 80,20 120,120 C 160,220 200,220 240,120 C 280,20 320,20 360,120 C 400,220 440,220 480,120 C 520,20 560,20 600,120 C 640,220 680,220 720,120 C 760,20 800,20 840,120 C 880,220 920,220 940,170"/>
+          </path>
+        </g>
+      </g>
+    </g>
+    <text x="5" y="210" font-size="18" fill="#FDB924" font-weight="bold">Current</text>
+
+    <!-- Phase status labels — fade IN slowly, fade OUT quickly, both states bookend the loop identically -->
+    <text x="258" y="250" font-size="20" font-weight="bold" fill="#FFFFFF">
+      <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.05;0.45;0.55;0.65;1"
+        dur="8s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+      Current lagging voltage (no cap bank)
+    </text>
+    <text x="230" y="250" font-size="20" font-weight="bold" fill="#FFFFFF">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.45;0.55;0.65;1"
+        dur="8s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+      Current pulled into phase (cap bank online)
+    </text>
+  </g>
+
+  <!-- ===================== TRANSMISSION LINE — SELF-SUPPORTED LATTICE TOWERS ===================== -->
+  <g id="powerline" transform="translate(60,300)">
+
+
+    <!-- ===== reusable lattice tower (left) ===== -->
+    <g id="towerLeft" transform="translate(180,0)">
+      <!-- self-supporting body: tapered lattice legs -->
+      <path d="M-55,320 L-18,40 L18,40 L55,320 Z" fill="none" stroke="#a3a2a2" stroke-width="5"/>
+      <!-- diagonal cross-bracing (zig-zag lattice pattern) -->
+      <path d="M-49,290 L18,250 M49,290 L-18,250
+               M-43,250 L18,210 M43,250 L-18,210
+               M-37,210 L18,170 M37,210 L-18,170
+               M-31,170 L18,130 M31,170 L-18,130
+               M-25,130 L14,95  M25,130 L-14,95
+               M-27,93  L13,55  M27,93  L-13,55"
+            fill="none" stroke="#a3a2a2" stroke-width="1.6"/>
+      <!-- horizontal lattice rungs -->
+      <!--<line x1="-49" y1="290" x2="49" y2="290" stroke="#cfd8ef" stroke-width="1.6"/>-->
+      <line x1="-43" y1="250" x2="43" y2="250" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-37" y1="210" x2="37" y2="210" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-31" y1="170" x2="31" y2="170" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-24" y1="130" x2="25" y2="130" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-24" y1="95" x2="25" y2="95" stroke="#a3a2a2" stroke-width="1.6"/>
+      <!-- crossarms -->
+      <line x1="-65" y1="55" x2="65" y2="55" stroke="#a3a2a2" stroke-width="5" stroke-linecap="round"/>
+      <line x1="-50" y1="85" x2="50" y2="85" stroke="#a3a2a2" stroke-width="5" stroke-linecap="round"/>
+      <!-- insulators -->
+      <g fill="#e9eef9">
+        <rect x="-70" y="55" width="9" height="14" rx="2"/>
+        <rect x="-5"  y="55" width="9" height="14" rx="2"/>
+        <rect x="61"  y="55" width="9" height="14" rx="2"/>
+        <rect x="-55" y="85" width="9" height="14" rx="2"/>
+        <rect x="46"  y="85" width="9" height="14" rx="2"/>
+      </g>
+    </g>
+
+    <!-- ===== reusable lattice tower (right), mirrored ===== -->
+    <g id="towerRight" transform="translate(700,0)">
+      <path d="M-55,320 L-18,40 L18,40 L55,320 Z" fill="none" stroke="#a3a2a2" stroke-width="5"/>
+      <path d="M-49,290 L18,250 M49,290 L-18,250
+               M-43,250 L18,210 M43,250 L-18,210
+               M-37,210 L18,170 M37,210 L-18,170
+               M-31,170 L18,130 M31,170 L-18,130
+               M-25,130 L14,95  M25,130 L-14,95
+               M-27,93  L13,55  M27,93  L-13,55"
+            fill="none" stroke="#a3a2a2" stroke-width="1.6"/>
+      <!--<line x1="-49" y1="290" x2="49" y2="290" stroke="#cfd8ef" stroke-width="1.6"/>-->
+      <line x1="-43" y1="250" x2="43" y2="250" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-37" y1="210" x2="37" y2="210" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-31" y1="170" x2="31" y2="170" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-25" y1="130" x2="25" y2="130" stroke="#a3a2a2" stroke-width="1.6"/>
+      <line x1="-65" y1="55" x2="65" y2="55" stroke="#a3a2a2" stroke-width="5" stroke-linecap="round"/>
+      <line x1="-50" y1="85" x2="50" y2="85" stroke="#a3a2a2" stroke-width="5" stroke-linecap="round"/>
+      <line x1="-24" y1="95" x2="25" y2="95" stroke="#a3a2a2" stroke-width="1.6"/>
+      <g fill="#e9eef9">
+        <rect x="-70" y="55" width="9" height="14" rx="2"/>
+        <rect x="-5"  y="55" width="9" height="14" rx="2"/>
+        <rect x="61"  y="55" width="9" height="14" rx="2"/>
+        <rect x="-55" y="85" width="9" height="14" rx="2"/>
+        <rect x="46"  y="85" width="9" height="14" rx="2"/>
+      </g>
+    </g>
+
+    <!-- Wires sagging between the two tower crossarms -->
+    <path id="wireTop" d="M110,55 Q 460,125 770,55" fill="none" stroke="#444" stroke-width="3"/>
+    <path id="wireMid" d="M175,55 Q 460,110 705,55" fill="none" stroke="#444" stroke-width="3"/>
+    <path id="wireBot" d="M240,55 Q 460,90 640,55" fill="none" stroke="#444" stroke-width="3"/>
+
+    <!-- Cartoon energy pulses flowing continuously on all three wires -->
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.4s" path="M110,55 Q 460,125 770,55"/>
+    </circle>
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2.2s" repeatCount="indefinite" begin="1.2s" path="M175,55 Q 460,110 705,55"/>
+    </circle>
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.8s" path="M240,55 Q 460,90 640,55"/>
+    </circle>
+    
+
+    <!-- ===== Capacitor Bank structure — always present, sitting on its own steel rack ===== -->
+    <g id="capbank" transform="translate(455,0)">
+
+      <!-- steel support rack -->
+      <line x1="-55" y1="320" x2="-30" y2="200" stroke="#9fb3c8" stroke-width="4"/>
+      <line x1="55"  y1="320" x2="30"  y2="200" stroke="#9fb3c8" stroke-width="4"/>
+      <line x1="-30" y1="200" x2="30"  y2="200" stroke="#9fb3c8" stroke-width="4"/>
+      <line x1="-42" y1="260" x2="30"  y2="200" stroke="#9fb3c8" stroke-width="2"/>
+      <line x1="42"  y1="260" x2="-30" y2="200" stroke="#9fb3c8" stroke-width="2"/>
+      <line x1="-48" y1="320" x2="48"  y2="320" stroke="#9fb3c8" stroke-width="4"/>
+
+      <!-- support insulators -->
+      <rect x="-38" y="178" width="10" height="22" rx="2" fill="#e9eef9"/>
+      <rect x="-5"  y="178" width="10" height="22" rx="2" fill="#e9eef9"/>
+      <rect x="28"  y="178" width="10" height="22" rx="2" fill="#e9eef9"/>
+
+      <!-- capacitor cans, racked side by side -->
+      <g>
+        <rect x="-44" y="140" width="22" height="40" rx="6" fill="#9fb3c8" stroke="#3a1010" stroke-width="2"/>
+        <rect x="-11" y="140" width="22" height="40" rx="6" fill="#9fb3c8" stroke="#3a1010" stroke-width="2"/>
+        <rect x="22"  y="140" width="22" height="40" rx="6" fill="#9fb3c8" stroke="#3a1010" stroke-width="2"/>
+        <line x1="-44" y1="155" x2="-22" y2="155" stroke="#FDB924" stroke-width="2"/>
+        <line x1="-11" y1="155" x2="11"  y2="155" stroke="#FDB924" stroke-width="2"/>
+        <line x1="22"  y1="155" x2="44"  y2="155" stroke="#FDB924" stroke-width="2"/>
+      </g>
+
+      <!-- bus bar joining the cans, feeding up to the switch -->
+      <line x1="-33" y1="140" x2="33" y2="140" stroke="#444" stroke-width="3"/>
+      <line x1="0" y1="140" x2="0" y2="125" stroke="#444" stroke-width="3"/>
+
+      <!-- ===== disconnect switch: fixed terminal + swinging blade ===== -->
+      <!-- top fixed terminal, tied to the wire tap -->
+      <line x1="0" y1="72" x2="0" y2="100" stroke="#444" stroke-width="3"/>
+      <circle cx="0" cy="100" r="4" fill="#cfd8ef"/>
+      <!-- bottom fixed terminal -->
+      <circle cx="0" cy="125" r="4" fill="#cfd8ef"/>
+      <!-- swinging blade: closed = vertical (connects), open = swung out to the side -->
+      <g transform="translate(0,100)">
+        <line x1="0" y1="0" x2="0" y2="25" stroke="#FDB924" stroke-width="4" stroke-linecap="round">
+          <animateTransform attributeName="transform" type="rotate"
+            values="55,0,0;55,0,0;0,0,0;0,0,0;55,0,0;55,0,0"
+            keyTimes="0;0.05;0.45;0.55;0.65;1" dur="8s" repeatCount="indefinite" calcMode="spline"
+            keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+        </line>
+      </g>
+
+      <!-- ground symbol 
+      <line x1="-15" y1="332" x2="15" y2="332" stroke="#3a1010" stroke-width="3"/>
+      <line x1="-10" y1="338" x2="10" y2="338" stroke="#3a1010" stroke-width="3"/>
+      <line x1="-5"  y1="344" x2="5"  y2="344" stroke="#3a1010" stroke-width="3"/>
+      -->
+      <text x="-100" y="235" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">
+        Capacitor
+      </text>
+      <text x="-101" y="248" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">
+        Bank
+      </text>
+
+      <!-- switch state label -->
+      <text x="-80" y="140" text-anchor="left"
+        font-size="18" font-weight="bold" fill="#DDDDDD">
+          <tspan x="-130" dy="-10">Switch</tspan>
+          <tspan x="-130" dy="18">OPEN</tspan>
+
+        <animate attributeName="opacity"
+           values="1;1;0;0;1;1"
+           keyTimes="0;0.05;0.45;0.55;0.65;1"
+           dur="8s"
+           repeatCount="indefinite"
+           calcMode="spline"
+           keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+      </text>
+
+      <text x="-80" y="140" text-anchor="left" font-size="18" font-weight="bold" fill="#FDB924">
+          <tspan x="-130" dy="-10">Switch</tspan>
+          <tspan x="-130" dy="18">CLOSED</tspan>
+
+        <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.45;0.55;0.65;1"
+          dur="8s" repeatCount="indefinite" calcMode="spline"
+          keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+      </text>
+    </g>
+
+    <!-- "Without cap bank" label — fades in slow, out fast, opposite the "with" label -->
+    <text x="235" y="20" text-anchor="left" font-size="18" font-weight="bold" fill="#DDDDDD">
+      <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.05;0.45;0.55;0.65;1"
+        dur="8s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+      Switch open – lagging current, wasted capacity
+    </text>
+    <text x="255" y="20" text-anchor="left" font-size="18" font-weight="bold" fill="#FDB924">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.45;0.55;0.65;1"
+        dur="8s" repeatCount="indefinite" calcMode="spline"
+        keySplines="0.6 0 0.2 1;0.6 0 0.2 1;0.1 0 0.3 1;0.1 0 0.3 1;0.6 0 0.2 1"/>
+      Switch closed – current pulled into phase
+    </text>
+    <!-- ground -->
+    <line x1="0" y1="320" x2="940" y2="320" stroke="#3a1010" stroke-width="5"/>
+  </g>
+
+  <!-- Footer -->
+  <text x="530" y="655" text-anchor="middle" font-size="22" fill="#FFFFFF">
+    Made by Jad Haddad
+  </text>
+
+</svg>
+</body>
+</html>

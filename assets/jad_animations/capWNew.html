@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cap Bank — Sensing Circuit with SEL-487V</title>
+<style>
+  body {
+    margin: 0;
+    background: #4182c3;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #3a1010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .lcd-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    letter-spacing: 1px;
+    /* Simulate retro LCD dot-matrix pixelated look */
+    text-shadow: 
+      1px 1px 0px rgba(0, 0, 0, 0.15),
+      -1px -1px 0px rgba(255, 255, 255, 0.05);
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1200 725" width="98vw" style="max-width:1200px" xmlns="http://www.w3.org/2000/svg">
+
+  <g id="schematic" transform="translate(0,85)">
+
+    <text x="150" y="96" font-size="20" font-weight="bold" fill="#FFFFFF">+</text>
+    <circle cx="180" cy="90" r="7" fill="none" stroke="#000000" stroke-width="2"/>
+    <text x="155" y="135" font-size="16" font-weight="bold" fill="#FFFFFF">V-BUS</text>
+    <line x1="187" y1="90" x2="290" y2="90" stroke="#000000" stroke-width="4"/>
+
+    <path id="zcapZigzag" d="M290,90 L306,90 L322,68 L346,112 L370,68 L394,112 L410,90 L470,90"
+          fill="none" stroke="#3a1010" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="380" y="50" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">Z-CAP-BANK</text>
+    <text id="zcapText" class="lcd-text" x="380" y="135" text-anchor="middle" font-size="16" font-weight="bold" fill="#FDB924">100.0 Ω</text>
+
+    <circle cx="510" cy="90" r="5" fill="#000000" stroke="#000000" stroke-width="2.5"/>
+    <line x1="470" y1="90" x2="510" y2="90" stroke="#000000" stroke-width="4"/>
+    <line x1="510" y1="90" x2="957" y2="90" stroke="#000000" stroke-width="4"/>
+
+    <circle cx="965" cy="90" r="7" fill="none" stroke="#000000" stroke-width="2"/>
+    <text x="980" y="96" font-size="18" font-weight="bold" fill="#FFFFFF">+</text>
+    <text x="910" y="135" font-size="15" font-weight="bold" fill="#FFFFFF">V-TAP-CAP</text>
+
+    <line x1="510" y1="90" x2="510" y2="135" stroke="#000000" stroke-width="4"/>
+    <path id="ztapZigzag" d="M510,135 L510,148 L486,162 L534,186 L486,210 L510,224 L510,235"
+          fill="none" stroke="#3a1010" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="510" y1="235" x2="510" y2="280" stroke="#000000" stroke-width="4"/>
+    <text x="565" y="175" font-size="15" font-weight="bold" fill="#FFFFFF">Z-TAP-CAP</text>
+    <text id="ztapText" class="lcd-text" x="565" y="197" font-size="16" font-weight="bold" fill="#FDB924">50.0 Ω</text>
+
+    <line x1="187" y1="280" x2="957" y2="280" stroke="#000000" stroke-width="4"/>
+    <circle cx="180" cy="280" r="7" fill="none" stroke="#000000" stroke-width="2"/>
+    <text x="120" y="286" font-size="20" font-weight="bold" fill="#FFFFFF">–</text>
+    <circle cx="965" cy="280" r="7" fill="none" stroke="#000000" stroke-width="2"/>
+    <text x="980" y="286" font-size="20" font-weight="bold" fill="#FFFFFF">–</text>
+  </g>
+
+  <g transform="translate(0, 355)">
+    <rect x="170" y="-110" width="265" height="38" rx="8" fill="rgba(0,0,0,0.7)" />
+    <circle id="statusLED" cx="197" cy="-91" r="8" fill="#4CFF6E" stroke="#1a2b1a" stroke-width="2"/>
+    <text id="phaseLabel" x="215" y="-84" font-size="17" font-weight="bold" fill="#4CFF6E">NORMAL OPERATION</text>
+  </g>
+
+  <g id="selRelay" transform="translate(100, 395)">
+    <rect x="-30" y="15" width="30" height="250" fill="#94a3b8" rx="2" stroke="#475569" stroke-width="2"/>
+    <rect x="1000" y="15" width="30" height="250" fill="#94a3b8" rx="2" stroke="#475569" stroke-width="2"/>
+    <circle cx="-15" cy="40" r="6" fill="#475569" />
+    <circle cx="-15" cy="240" r="6" fill="#475569" />
+    <circle cx="1015" cy="40" r="6" fill="#475569" />
+    <circle cx="1015" cy="240" r="6" fill="#475569" />
+
+    <rect x="0" y="0" width="1000" height="280" rx="12" fill="#1b2a4a" stroke="#0d1b33" stroke-width="4"/>
+    <rect x="15" y="15" width="970" height="250" rx="8" fill="none" stroke="#2c3e66" stroke-width="2"/>
+
+    <rect x="40" y="35" width="45" height="22" rx="4" fill="#64748b" stroke="#475569" stroke-width="1.5"/>
+    <polygon points="45,40 80,40 75,52 50,52" fill="#cbd5e1" stroke="#334155" stroke-width="1"/>
+    <circle cx="51" cy="43" r="1" fill="#000"/><circle cx="56" cy="43" r="1" fill="#000"/><circle cx="61" cy="43" r="1" fill="#000"/><circle cx="66" cy="43" r="1" fill="#000"/><circle cx="71" cy="43" r="1" fill="#000"/>
+    <circle cx="53" cy="49" r="1" fill="#000"/><circle cx="58" cy="49" r="1" fill="#000"/><circle cx="63" cy="49" r="1" fill="#000"/><circle cx="68" cy="49" r="1" fill="#000"/>
+    <text x="95" y="48" font-size="10" font-weight="bold" fill="#94a3b8">PORT F</text>
+
+    <rect x="145" y="30" width="45" height="28" rx="4" fill="#0d1b33" stroke="#2c3e66"/>
+    <text x="167" y="49" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">SEL</text>
+    <text x="198" y="40" font-size="9" font-weight="bold" fill="#cbd5e1">SCHWEITZER ENGINEERING</text>
+    <text x="198" y="51" font-size="9" font-weight="bold" fill="#cbd5e1">LABORATORIES</text>
+
+    <text x="440" y="43" text-anchor="middle" font-size="18" font-weight="bold" fill="#FFFFFF">SEL – 487V</text>
+    <text x="440" y="56" text-anchor="middle" font-size="9" fill="#94a3b8" letter-spacing="1">PROTECTION AUTOMATION CONTROL</text>
+
+    <g transform="translate(145, 75)">
+      <rect x="0" y="0" width="230" height="160" rx="6" fill="#86efac" stroke="#166534" stroke-width="4"/>
+      <rect x="0" y="0" width="230" height="160" rx="6" fill="url(#lcdGrid)" opacity="0.25" pointer-events="none"/>
+      
+      <polygon id="lcdUpArrow" points="25,55 38,37 51,55" fill="#064e3b" stroke="#022c22" stroke-width="1" opacity="0.15"/>
+      <polygon id="lcdDnArrow" points="25,100 38,118 51,100" fill="#064e3b" stroke="#022c22" stroke-width="1" opacity="0.15"/>
+
+      <text id="lcdVolt" class="lcd-text" x="140" y="72" text-anchor="middle" font-size="32" fill="#022c22">+0.00 V</text>
+      <text id="lcdDiff" class="lcd-text" x="140" y="112" text-anchor="middle" font-size="20" fill="#064e3b">NO DIFF.</text>
+      
+      <line x1="15" y1="130" x2="215" y2="130" stroke="#064e3b" stroke-width="1" opacity="0.5"/>
+      <text id="lcdStatus" class="lcd-text" x="115" y="148" text-anchor="middle" font-size="12" fill="#022c22">NORMAL</text>
+    </g>
+
+    <g transform="translate(415, 145)">
+      <circle cx="35" cy="-35" r="16" fill="#2c3e66" stroke="#475569" stroke-width="2"/>
+      <polygon points="29,-31 35,-41 41,-31" fill="#FFFFFF"/>
+      <circle cx="35" cy="35" r="16" fill="#2c3e66" stroke="#475569" stroke-width="2"/>
+      <polygon points="29,31 35,41 41,31" fill="#FFFFFF"/>
+      <circle cx="0" cy="0" r="16" fill="#2c3e66" stroke="#475569" stroke-width="2"/>
+      <polygon points="4,-6 -6,0 4,6" fill="#FFFFFF"/>
+      <circle cx="70" cy="0" r="16" fill="#2c3e66" stroke="#475569" stroke-width="2"/>
+      <polygon points="66,-6 76,0 66,6" fill="#FFFFFF"/>
+      
+      <rect x="-20" y="62" width="40" height="20" rx="4" fill="#2c3e66" stroke="#475569" stroke-width="1.5"/>
+      <text x="0" y="75" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF" class="lcd-text">ESC</text>
+      <rect x="50" y="62" width="40" height="20" rx="4" fill="#2c3e66" stroke="#475569" stroke-width="1.5"/>
+      <text x="70" y="75" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF" class="lcd-text">ENT</text>
+    </g>
+
+    <g transform="translate(515, 80)">
+      <circle id="ledEnabled" cx="15" cy="15" r="6" fill="#22c55e" stroke="#15803d" stroke-width="1.5"/>
+      <text x="30" y="18" font-size="10" font-weight="bold" fill="#cbd5e1">ENABLED</text>
+      
+      <circle id="ledTrip" cx="15" cy="40" r="6" fill="#7f1d1d" stroke="#450a0a" stroke-width="1.5"/>
+      <text x="30" y="43" font-size="10" font-weight="bold" fill="#cbd5e1">TRIP</text>
+
+      <circle cx="120" cy="27" r="15" fill="#2c3e66" stroke="#475569" stroke-width="2"/>
+      <text x="120" y="26" text-anchor="middle" font-size="6" font-weight="bold" fill="#FFFFFF">TARGET</text>
+      <text x="120" y="34" text-anchor="middle" font-size="6" font-weight="bold" fill="#FFFFFF">RESET</text>
+    </g>
+
+    <g transform="translate(515, 155)" font-size="8" font-weight="bold" fill="#94a3b8">
+      <circle id="led87A" cx="15" cy="10" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="25" y="13">87A TRIP</text>
+      <circle id="led87B" cx="15" cy="28" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="25" y="31">87B TRIP</text>
+      <circle id="led87C" cx="15" cy="46" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="25" y="49">87C TRIP</text>
+      <circle id="ledBkrFail" cx="15" cy="64" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="25" y="67">BRKR FAIL</text>
+
+      <circle id="led87Alarm" cx="105" cy="10" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="115" y="13">87 ALARM</text>
+      <circle id="ledAnomal" cx="105" cy="28" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="115" y="31">SYS ALARM</text>
+      <circle id="ledIrig" cx="105" cy="46" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="115" y="49">IRIG ALARM</text>
+      <circle id="ledLop" cx="105" cy="64" r="3.5" fill="#450a0a" stroke="#250303" stroke-width="1"/>
+      <text x="115" y="67">LOP ALARM</text>
+    </g>
+
+    <g transform="translate(735, 40)" font-size="9" font-weight="bold" fill="#FFFFFF">
+      <circle cx="20" cy="25" r="11" fill="#1b2a4a" stroke="#2c3e66" stroke-width="2"/>
+      <text x="40" y="28" fill="#94a3b8">87 ENABLE</text>
+      <circle cx="20" cy="65" r="11" fill="#1b2a4a" stroke="#2c3e66" stroke-width="2"/>
+      <text x="40" y="68" fill="#94a3b8">51 ENABLE</text>
+      <circle cx="20" cy="105" r="11" fill="#1b2a4a" stroke="#2c3e66" stroke-width="2"/>
+      <text x="40" y="108" fill="#94a3b8">TEST MODE</text>
+      <circle cx="20" cy="145" r="11" fill="#1b2a4a" stroke="#2c3e66" stroke-width="2"/>
+      <text x="40" y="148" fill="#94a3b8">LOCAL EN.</text>
+    </g>
+
+    <g transform="translate(875, 45)">
+      <rect x="0" y="0" width="100" height="190" rx="6" fill="#0d1b33" stroke="#2c3e66" stroke-width="1.5"/>
+      <text x="50" y="25" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">BREAKER</text>
+      
+      <circle cx="50" cy="70" r="22" fill="#ef4444" stroke="#991b1b" stroke-width="3"/>
+      <text x="50" y="105" text-anchor="middle" font-size="11" font-weight="bold" fill="#cbd5e1">CLOSE</text>
+
+      <circle cx="50" cy="135" r="22" fill="#22c55e" stroke="#166534" stroke-width="3"/>
+      <text x="50" y="170" text-anchor="middle" font-size="11" font-weight="bold" fill="#cbd5e1">TRIP</text>
+    </g>
+  </g>
+
+  <text x="600" y="708" text-anchor="middle" font-size="20" fill="#FFFFFF">
+    Made by Jad Haddad
+  </text>
+
+  <circle r="5" fill="#c9890a">
+      <animateMotion dur="2s" repeatCount="indefinite" begin="0" path="M300,175 L845,175 300,175 "/>
+    </circle>
+
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2s" repeatCount="indefinite" begin="0" path="M180,175 L725,175 180,175 "/>
+    </circle>
+
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2s" repeatCount="indefinite" begin="0" path="M420,175 L965,175 420,175 "/>
+    </circle>
+    
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="1" begin=".5" repeatCount="indefinite" begin="0" path="M510,175 510,365 510,175 "/>
+    </circle>
+
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2s" repeatCount="indefinite" begin="0" path="M300,365 L845,365 300,365 "/>
+    </circle>
+
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2s" repeatCount="indefinite" begin="0" path="M180,365 L725,365 180,365 "/>
+    </circle>
+
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="2s" repeatCount="indefinite" begin="0" path="M420,365 L965,365 420,365 "/>
+    </circle>
+    
+    <circle r="5" fill="#c9890a">
+      <animateMotion dur="1" begin=".5" repeatCount="indefinite" begin="0" path="M510,175 510,365 510,175 "/>
+    </circle>
+
+
+
+  <defs>
+    <pattern id="lcdGrid" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="3" fill="none"/>
+      <path d="M 3 0 L 0 0 0 3" fill="none" stroke="#22c55e" stroke-width="0.35" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+</svg>
+
+<script>
+(function(){
+  const states = [
+    { 
+      zcap: 100.0, ztap: 50.0, dV: 0.00, 
+      label: "NORMAL OPERATION", 
+      diffText: "NO DIFF.", lcdStatus: "SYSTEM OK",
+      shortP: 0, openP: 0, tapP: 0, trip: false 
+    },
+    { 
+      zcap: 83.3,  ztap: 50.0, dV: -1.35, 
+      label: "CAP BANK CAN SHORT", 
+      diffText: "NEG. DIFF.", lcdStatus: "IMBALANCE",
+      shortP: 1, openP: 0, tapP: 0, trip: true 
+    },
+    { 
+      zcap: 121.5, ztap: 50.0, dV: 2.10, 
+      label: "CAP BANK CAN OPEN", 
+      diffText: "POS. DIFF.", lcdStatus: "IMBALANCE",
+      shortP: 0, openP: 1, tapP: 0, trip: true 
+    },
+    { 
+      zcap: 100.0, ztap: 0.0, dV: 2.85, 
+      label: "TAP-CAP SHORT", 
+      diffText: "POS. DIFF.", lcdStatus: "BRIDGE FLT",
+      shortP: 0, openP: 0, tapP: 1, trip: true 
+    }
+  ];
+  const HOLD = 3200, TRANS = 1400, SEG = HOLD + TRANS, CYCLE = 4 * SEG;
+
+  function easeInOut(t){ return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; }
+  function lerp(a,b,t){ return a + (b-a)*t; }
+
+  // Resistors & Labels
+  const zcapText = document.getElementById('zcapText');
+  const ztapText = document.getElementById('ztapText');
+  const zcapZigzag = document.getElementById('zcapZigzag');
+  const ztapZigzag = document.getElementById('ztapZigzag');
+  
+  // Status Bar
+  const phaseLabel = document.getElementById('phaseLabel');
+  const statusLED = document.getElementById('statusLED');
+
+  // SEL-487V LCD & LEDs
+  const lcdVolt = document.getElementById('lcdVolt');
+  const lcdDiff = document.getElementById('lcdDiff');
+  const lcdStatus = document.getElementById('lcdStatus');
+  const lcdUpArrow = document.getElementById('lcdUpArrow');
+  const lcdDnArrow = document.getElementById('lcdDnArrow');
+  const ledEnabled = document.getElementById('ledEnabled');
+  const ledTrip = document.getElementById('ledTrip');
+  
+  // Relay Config Matrix LEDs
+  const led87A = document.getElementById('led87A');
+  const led87B = document.getElementById('led87B');
+  const led87C = document.getElementById('led87C');
+  const ledAnomal = document.getElementById('ledAnomal');
+
+  function colorLerp(c1, c2, t){
+    const r = Math.round(lerp(c1[0], c2[0], t));
+    const g = Math.round(lerp(c1[1], c2[1], t));
+    const b = Math.round(lerp(c1[2], c2[2], t));
+    return `rgb(${r},${g},${b})`;
+  }
+
+  const NORMAL_COLOR = [0, 0, 0];       // Starts black in normal
+  const FAULT_RED    = [255, 51, 51];   // Bright red for shorts
+  const FAULT_PURPLE = [201, 44, 245];  // Bright purple for opens
+  
+  const GREEN  = [76, 255, 110];
+  const RED    = [255, 51, 51];
+  const PURPLE = [217, 70, 239];
+
+  // Define target zigzag colors per state to guarantee perfect transitioning
+  const stateZigzagColors = [
+    { cap: NORMAL_COLOR, tap: NORMAL_COLOR }, // State 0: Normal
+    { cap: FAULT_RED,    tap: NORMAL_COLOR }, // State 1: Cap Short (Red)
+    { cap: FAULT_PURPLE, tap: NORMAL_COLOR }, // State 2: Cap Open (Purple)
+    { cap: NORMAL_COLOR, tap: FAULT_RED }     // State 3: Tap Short (Red)
+  ];
+
+  // Hex configuration converted perfectly to RGB targets
+  const ENABLE_ACTIVE_FILL    = [34, 197, 94];   // #22c55e
+  const ENABLE_ACTIVE_STROKE  = [21, 128, 61];   // #15803d
+  const ENABLE_INACTIVE_FILL  = [21, 128, 61];   // #15803d
+  const ENABLE_INACTIVE_STROKE= [10, 60, 25];    // Dark green edge
+
+  const TRIP_INACTIVE_FILL    = [127, 29, 29];   // #7f1d1d
+  const TRIP_INACTIVE_STROKE  = [69, 10, 10];    // #450a0a
+  const TRIP_ACTIVE_FILL      = [239, 68, 68];   // Active warning red
+  const TRIP_ACTIVE_STROKE    = [248, 113, 113];  // Bright active red border
+
+  // Other dynamic LED metrics
+  const LED_OFF_FILL          = [69, 10, 10];
+  const LED_OFF_STROKE        = [37, 3, 3];
+  const YELLOW_ON_FILL        = [245, 201, 5];
+  const YELLOW_ON_STROKE      = [255, 230, 100];
+
+  let startTime = performance.now();
+
+  function frame(now){
+    const t = (now - startTime) % CYCLE;
+    const segIndex = Math.floor(t / SEG);
+    const segT = t - segIndex * SEG;
+    const curr = states[segIndex];
+    const next = states[(segIndex + 1) % 4];
+
+    let p = 0;
+    if (segT >= HOLD) {
+      p = easeInOut((segT - HOLD) / TRANS);
+    }
+
+    const zcap = lerp(curr.zcap, next.zcap, p);
+    const ztap = lerp(curr.ztap, next.ztap, p);
+    const dV = lerp(curr.dV, next.dV, p);
+    
+    const shortP = lerp(curr.shortP, next.shortP, p);
+    const openP = lerp(curr.openP, next.openP, p);
+    const tapP = lerp(curr.tapP, next.tapP, p);
+    const capFaultP = Math.max(shortP, openP);
+
+    // Update resistor values
+    zcapText.textContent = zcap.toFixed(1) + ' Ω';
+    ztapText.textContent = ztap.toFixed(1) + ' Ω';
+
+    // Interpolate target schematic colors perfectly between steps
+    const currColors = stateZigzagColors[segIndex];
+    const nextColors = stateZigzagColors[(segIndex + 1) % 4];
+
+    const activeCapColor = colorLerp(currColors.cap, nextColors.cap, p);
+    const activeTapColor = colorLerp(currColors.tap, nextColors.tap, p);
+
+    zcapZigzag.setAttribute('stroke', activeCapColor);
+    zcapZigzag.setAttribute('stroke-width', 4 + capFaultP * 2);
+
+    ztapZigzag.setAttribute('stroke', activeTapColor);
+    ztapZigzag.setAttribute('stroke-width', 4 + tapP * 2);
+
+    // Update dynamic LCD elements
+    lcdVolt.textContent = (dV >= 0 ? '+' : '') + dV.toFixed(2) + ' V';
+    
+    // Smooth LCD status / state swapping
+    if (segT < HOLD) {
+      lcdDiff.textContent = curr.diffText;
+      lcdStatus.textContent = curr.lcdStatus;
+      phaseLabel.textContent = curr.label;
+      phaseLabel.style.opacity = 1;
+      
+      // Select appropriate status color (Normal -> Green, Short -> Red, Open -> Purple)
+      let currColor = GREEN;
+      if (curr.shortP > 0 || curr.tapP > 0) currColor = RED;
+      else if (curr.openP > 0) currColor = PURPLE;
+
+      phaseLabel.setAttribute('fill', `rgb(${currColor[0]},${currColor[1]},${currColor[2]})`);
+      statusLED.setAttribute('fill', `rgb(${currColor[0]},${currColor[1]},${currColor[2]})`);
+    } else {
+      const tp = (segT - HOLD) / TRANS;
+      lcdDiff.textContent = tp < 0.5 ? curr.diffText : next.diffText;
+      lcdStatus.textContent = tp < 0.5 ? curr.lcdStatus : next.lcdStatus;
+      phaseLabel.textContent = tp < 0.5 ? curr.label : next.label;
+      phaseLabel.style.opacity = (1 - Math.sin(Math.min(tp,1) * Math.PI) * 0.85).toFixed(2);
+      
+      // Blend label and status LED colors smoothly during transitions
+      let currColor = GREEN;
+      if (curr.shortP > 0 || curr.tapP > 0) currColor = RED;
+      else if (curr.openP > 0) currColor = PURPLE;
+
+      let nextColor = GREEN;
+      if (next.shortP > 0 || next.tapP > 0) nextColor = RED;
+      else if (next.openP > 0) nextColor = PURPLE;
+
+      let labelColor = colorLerp(currColor, nextColor, tp);
+      phaseLabel.setAttribute('fill', labelColor);
+      statusLED.setAttribute('fill', labelColor);
+    }
+
+    // Handle Up/Down Screen Arrow Highlighting
+    if (dV > 0.1) {
+      lcdUpArrow.setAttribute('opacity', '0.9');
+      lcdDnArrow.setAttribute('opacity', '0.10');
+    } else if (dV < -0.1) {
+      lcdUpArrow.setAttribute('opacity', '0.10');
+      lcdDnArrow.setAttribute('opacity', '0.9');
+    } else {
+      lcdUpArrow.setAttribute('opacity', '0.10');
+      lcdDnArrow.setAttribute('opacity', '0.10');
+    }
+
+    // Handle Hardware Relay Status LEDs (Fill & Stroke Transition Dynamically)
+    const tripP = lerp(curr.trip ? 1 : 0, next.trip ? 1 : 0, p);
+    
+    // Trip LED (Turns vibrant on Trip, fades back to user's exact dark #7f1d1d and #450a0a)
+    ledTrip.setAttribute('fill', colorLerp(LED_OFF_FILL, TRIP_ACTIVE_FILL, tripP));
+    ledTrip.setAttribute('stroke', colorLerp(LED_OFF_STROKE, TRIP_ACTIVE_FILL, tripP));
+
+    // Enabled LED (Active is user's exact bright green #22c55e and #15803d, dims during Trip events)
+    ledEnabled.setAttribute('fill', colorLerp(ENABLE_ACTIVE_FILL, ENABLE_INACTIVE_STROKE, tripP));
+    ledEnabled.setAttribute('stroke', colorLerp(ENABLE_ACTIVE_STROKE, ENABLE_INACTIVE_STROKE, tripP));
+
+    // Hardware Configuration Matrix LEDs triggers
+    led87A.setAttribute('fill', colorLerp(LED_OFF_FILL, TRIP_ACTIVE_FILL, shortP));
+    led87A.setAttribute('stroke', colorLerp(LED_OFF_STROKE, TRIP_ACTIVE_STROKE, shortP));
+
+    led87B.setAttribute('fill', colorLerp(LED_OFF_FILL, TRIP_ACTIVE_FILL, openP));
+    led87B.setAttribute('stroke', colorLerp(LED_OFF_STROKE, TRIP_ACTIVE_STROKE, openP));
+
+    led87C.setAttribute('fill', colorLerp(LED_OFF_FILL, TRIP_ACTIVE_FILL, tapP));
+    led87C.setAttribute('stroke', colorLerp(LED_OFF_STROKE, TRIP_ACTIVE_STROKE, tapP));
+
+    ledAnomal.setAttribute('fill', colorLerp(LED_OFF_FILL, YELLOW_ON_FILL, tripP));
+    ledAnomal.setAttribute('stroke', colorLerp(LED_OFF_STROKE, YELLOW_ON_STROKE, tripP));
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
