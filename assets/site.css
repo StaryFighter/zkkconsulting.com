@@ -456,7 +456,7 @@ section.alt .notice-plain { background: var(--bg); }
   font-size: 0.64rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
 }
 .badge-client { background: var(--navy); color: var(--white); }
-.badge-sample { background: var(--bg-alt); color: var(--navy); border: 1px solid var(--border); }
+.badge-sample { background: var(--gold); color: var(--white); border: 1px solid var(--bg-alt); }
 .badge-sampleGreen {background: var(--accent); color: #ffffff; border: 1px solid var(--border); margin-top: 10px; margin-bottom: 10px; font-weight: 900;}
 .badge-industry { background: #eef5f0; color: var(--accent); border: 1px solid #cbe0d3; }
 .case-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); line-height: 1.35; margin-bottom: 0.2rem; }
